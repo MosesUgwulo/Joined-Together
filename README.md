@@ -1,2 +1,2 @@
 # Joined-Together
- Game dev CA project
+ Game dev CA projects
