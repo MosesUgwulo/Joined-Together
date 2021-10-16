@@ -2,7 +2,7 @@
  Game dev CA projects
 
 # First Brainstorm with Ideas for base concept
-![First Brainstorm](https://i.imgur.com/R58sf7O.png)
+![First Brainstorm](https://i.imgur.com/i858tMD.png)
 <br>
 <br>
 # Concept Art
