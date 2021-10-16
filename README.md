@@ -3,4 +3,4 @@
 
 [Link to youtube](https://www.youtube.com/)
 <br>
-![Ant image](https://github.com/MosesUgwulo/Joined-Together/blob/main/Screenshot%202021-09-06%20004429.png?raw=true)
+![Ant image](https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_GenshinImpact_miHoYoLimited_S1_2560x1440-91c6cd7312cc2647c3ebccca10f30399)
