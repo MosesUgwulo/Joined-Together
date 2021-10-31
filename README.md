@@ -1,7 +1,7 @@
 # Joined-Together
  Game dev CA projects
  
-# First Brainstorm with Ideas for base concept
+# <u>First Brainstorm with Ideas for base concept</u>
 ![First Brainstorm](https://i.imgur.com/i858tMD.png)
 [First Brainstorm](https://trello.com/b/jdcLMSL3/brainstorm)
 
