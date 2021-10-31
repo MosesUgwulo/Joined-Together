@@ -13,3 +13,6 @@
 ![Coherent Game Concept](https://i.imgur.com/S4baKNW.png)
 [Coherent Game Concept](https://trello.com/b/NkuKW37X/apothecary)
 
+# Slide Deck for Pitch
+![Slide Deck for Pitch](https://i.imgur.com/lKuvcf2.png)
+[Slide Deck](https://docs.google.com/presentation/d/1TGuyaDQZUFl8ZHRpEviBwP1nAD4D9K16jwivEn-8t6M/edit?usp=sharing)
