@@ -9,6 +9,9 @@
 # <u>Concept Art</u>
 ### Main Character
 ![Main Character](https://i.imgur.com/Ti5wVfT.png)
+
+### Game Cover
+![Game Cover Art](https://i.imgur.com/Ivaaebk.png)
 <br>
 <br>
 # <u>Coherent Game Concept</u>
