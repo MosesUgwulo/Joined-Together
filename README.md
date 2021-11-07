@@ -22,3 +22,12 @@
 # <u>Slide Deck for Pitch</u>
 ![Slide Deck for Pitch](https://i.imgur.com/lKuvcf2.png)
 [Slide Deck](https://docs.google.com/presentation/d/1TGuyaDQZUFl8ZHRpEviBwP1nAD4D9K16jwivEn-8t6M/edit?usp=sharing)
+<br>
+<br>
+# <u>Scrum Board</u>
+![Scrum board on trello](https://i.imgur.com/q2gN4zI.png)
+[Link to scrum board](https://trello.com/b/mNCEym6F/scrum-board-ca)
+<br>
+<br>
+## <u>Burndown chart</u>
+![Burndown chart](https://i.imgur.com/8alGnBg.png)
