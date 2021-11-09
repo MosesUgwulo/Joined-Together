@@ -22,6 +22,7 @@
 # <u>Slide Deck for Pitch</u>
 ![Slide Deck for Pitch](https://i.imgur.com/lKuvcf2.png)
 [Slide Deck](https://docs.google.com/presentation/d/1TGuyaDQZUFl8ZHRpEviBwP1nAD4D9K16jwivEn-8t6M/edit?usp=sharing)
+<br>
 [Video of Pitch](https://www.youtube.com/watch?v=698_mULSu_M)
 <br>
 <br>
