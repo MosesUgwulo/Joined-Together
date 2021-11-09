@@ -32,4 +32,4 @@
 <br>
 <br>
 ## <u>Burndown chart</u>
-![Burndown chart](https://imgur.com/pQ4PGcK)
+![Burndown chart](https://i.imgur.com/pQ4PGcK.png)
