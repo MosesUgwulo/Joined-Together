@@ -1,7 +1,17 @@
--> WhoDoneIt
+-> BookOne.TheSetup //Chapter 1 or stage 1
 
-=== WhoDoneIt
-Peter: I believe I have found out who done it
+=== BookOne //Parent stitch
+
+
+
+
+= TheSetup
+This is where the body is found
+-> TheReveal
+
+
+
+= TheReveal //Sub-Stitch small conversation within the actual story
 
 Brendan: Really?
 //Branching/decisions
@@ -12,6 +22,8 @@ Brendan: Really?
     * * I showed him the bloody hankerchief 
         Peter: How horrifying!
         A gasp was heard in the room.
+        -> ButWhereDidItHappen
+        
         
     * * I showed him the muddy bootprint
         Peter: How mystifying!
@@ -22,4 +34,18 @@ Brendan: Really?
     Peter: Don't steal my thunder
     
     - Brendan: Let's just focus on the evidence shall we?
--> END
+-> ButWhereDidItHappen
+
+= ButWhereDidItHappen
+Peter: So tell me this, Ms. Author- where did the crime take place?
+-> BookTwo.TheReveal
+
+
+
+=== BookTwo //Different chapter in the same story
+
+-> TheReveal
+
+= TheReveal
+Peter: The butler did it this time
+-> DONE
