@@ -1,12 +1,21 @@
+VAR numberOfBodies = 0
 -> BookOne.TheSetup //Chapter 1 or stage 1
 
 === BookOne //Parent stitch
 
-
-
-
 = TheSetup
-This is where the body is found
+
+{
+- numberOfBodies:
+    This is where the {numberOfBodies} {numberOfBodies > 1: bodies were | body was} found! //Used to do math related stuff and if else stuff
+
+- else: 
+    Peter: The bodies.. they're gone!
+    Everyone gasped! One man fell dead!
+    ~ numberOfBodies = numberOfBodies + 1
+    
+}
+
 -> TheReveal
 
 
