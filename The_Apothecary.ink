@@ -13,24 +13,42 @@ VAR steel = 0
         -> StartingTheFire
         
         = StartingTheFire
-        * [Go left]
-            Oh, theres some flint
+            * [Go left]
+            -> left
+            
+            * [Go right]
+            -> right
+            
+            * [Try to start the fire]
+            -> FailFireStart
+        
+        
+    
+    = right
+    oh here it is
+     * [Go to campfire]
+     -> StartingTheFire2
+    
+    
+    = left
+    Oh, theres some flint
             * * [Pick up flint]
                 ~ flint = flint + 1
             -- Maybe there's some steel around here
             * * [Go to campfire]
-            -> StartingTheFire
+            -> StartingTheFire2
             
-        * [Try to start the fire]
-        -> FailFireStart
-        
-        
-        * [Go right]
+            
 
+    = StartingTheFire2
+        * [Go left]
+        -> left
+        
 = FailFireStart
 {
     - flint:
         I seem to be missing some {flint == 1: steel }
+        -> StartingTheFire
     
     - else:
         I seem to be missing flint and steel
