@@ -1,62 +1,107 @@
-VAR flint = 0
-VAR steel = 0
+/*VAR goneRight = 0
+VAR goneLeft = 0
+VAR goneStraight = 0*/
+VAR secret = 0
 -> Tutorial.TheCampfire
 
 === Tutorial
 
     = TheCampfire
-        The campfire has been made but there is
-        no way to light it up.
+    
+        [DIALOGUE - YOU HAVE WATER HERE FOR PLAYTEST]
+        -> UnlitCampfire
         
-        APOTHECARY: I need to find a way to start
-        the campfire.
-        -> StartingTheFire
+        = UnlitCampfire
+        {
         
-        = StartingTheFire
+        - secret == 3:
+                Alright I seem to have everything I need
+                -> LightingTheFire
+            
+        - else:
+            [DIALOGUE]
             * [Go left]
+            ~ secret = secret + 1
             -> left
             
             * [Go right]
+            ~ secret = secret + 1
             -> right
             
-            * [Try to start the fire]
-            -> FailFireStart
+            * [Go Straight]
+            ~ secret = secret + 1
+            -> straight
+            
+            
+                
+        
+        }
+        
+        
+        
+        
+       /* = UnlitCampfire
+            * [Go left]
+            ~ goneLeft = goneLeft + 1
+            -> left
+            
+            * [Go right]
+            ~ goneRight = goneRight + 1
+            -> right
+            
+            * [Go Straight]
+            ~ goneStraight = goneStraight + 1
+            -> straight*/
+            
+        = LightingTheFire
+            * [Light the fire]
+                [DIALOGUE]
+                -> END
+            
         
         
     
     = right
-    oh here it is
-     * [Go to campfire]
-     -> StartingTheFire2
+    [DIALOGUE]
+     * [Look around for rocks]
+        [MORE DIALOGUE]
+        
+            * * [Option 1]
+                [EVEN MORE DIALOGUE]
+                
+                * * * [Another option]
+                -       [SO MUCH MORE FUCKING DIALOGUE]
+                
+    * [Go to campfire]
+    -> UnlitCampfire
     
     
     = left
-    Oh, theres some flint
-            * * [Pick up flint]
-                ~ flint = flint + 1
-            -- Maybe there's some steel around here
-            * * [Go to campfire]
-            -> StartingTheFire2
-            
-            
-
-    = StartingTheFire2
-        * [Go left]
-        -> left
+    [DIALOGUE]
+        * [Pick up shovel]
+        [MORE DIALOGUE]
         
-= FailFireStart
-{
-    - flint:
-        I seem to be missing some {flint == 1: steel }
-        -> StartingTheFire
+        * *[Dig and find horseshoe]
+        -    [EVEN MORE DIALOGUE]
+                
     
-    - else:
-        I seem to be missing flint and steel
-        -> StartingTheFire
-}
+    * [Go to campfire]
+    -> UnlitCampfire
+    
+    = straight
+    [DIALOGUE - DEAD END OPTION]
+        * [Turn back]
+        -> UnlitCampfire
+        * [Explore]
+        -> Explore
+        
 
+        = Explore
+        [DIALOGUE]
+        * [Go back to campfire]
+        -> UnlitCampfire
 
-
+    
 
 
 -> END
