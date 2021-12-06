@@ -1,5 +1,13 @@
 VAR secret = 0
+<<<<<<< Updated upstream
 VAR shovelFound = false
+=======
+VAR fire = 0
+VAR water = 0
+VAR air = 0
+VAR earth = 0
+VAR combine = 0
+>>>>>>> Stashed changes
 -> Tutorial.TheCampfire
 
 === Tutorial
@@ -39,10 +47,21 @@ VAR shovelFound = false
 
         = LightingTheFire
             * [Light the fire]
+<<<<<<< Updated upstream
                 You use the flint and steel horseshoe to light the campfire. You set down Gude next to the warmth of the fire. She quickly falls asleep. You hold out your hands to warm yourself. 
                 Suddenly, sparks shoot out from within the flames and surge towards your palms! You watch as the magical wisps of flame dance at your finger tips. 
                 A warm mystical energy heats your very soul... You have gained the element of Fire!
                 -> END
+=======
+                You use the flint and steel horseshoe to light the campfire.
+                You set down Gude next to the warmth of the fire.
+                She falls fast asleep.
+                You hold out your hands to warm yourself.
+                Suddenly, sparks spring from the flames and fly to your palms!
+                You watch as the magical wisps of ember dance at your finger tips.
+                A warm mystical energy heats your very soul...
+                -> testElement.forestFire
+>>>>>>> Stashed changes
             
         
         
@@ -113,6 +132,35 @@ VAR shovelFound = false
         -> UnlitCampfire
 
     
+=== testElement
+    = forestFire
+{
+    - fire == 1 && water == 1 && combine == 2:
+        * [Combine elements]
+            You have made steam
+        -> return1
+    
+    - else:
+        Which elements would you like to combine
+    
+    * [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    -> forestFire
+    * [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    -> forestFire
+    * [Earth]
+    ~ earth = earth + 1
+    ~ combine = combine + 1
+    -> forestFire
+    * [Air]
+    ~ air = air + 1
+    ~ combine = combine + 1
+    -> forestFire
+}
 
+= return1
 
 -> END
