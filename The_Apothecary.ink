@@ -1,13 +1,10 @@
 VAR secret = 0
-<<<<<<< Updated upstream
 VAR shovelFound = false
-=======
 VAR fire = 0
 VAR water = 0
 VAR air = 0
 VAR earth = 0
 VAR combine = 0
->>>>>>> Stashed changes
 -> Tutorial.TheCampfire
 
 === Tutorial
@@ -47,24 +44,11 @@ VAR combine = 0
 
         = LightingTheFire
             * [Light the fire]
-<<<<<<< Updated upstream
                 You use the flint and steel horseshoe to light the campfire. You set down Gude next to the warmth of the fire. She quickly falls asleep. You hold out your hands to warm yourself. 
                 Suddenly, sparks shoot out from within the flames and surge towards your palms! You watch as the magical wisps of flame dance at your finger tips. 
                 A warm mystical energy heats your very soul... You have gained the element of Fire!
-                -> END
-=======
-                You use the flint and steel horseshoe to light the campfire.
-                You set down Gude next to the warmth of the fire.
-                She falls fast asleep.
-                You hold out your hands to warm yourself.
-                Suddenly, sparks spring from the flames and fly to your palms!
-                You watch as the magical wisps of ember dance at your finger tips.
-                A warm mystical energy heats your very soul...
                 -> testElement.forestFire
->>>>>>> Stashed changes
-            
-        
-        
+
     
     = right
     Piles of shale and stone are scattered on the barren ground in front of you. You see a gathering of large rocks piled in front of you.
@@ -136,26 +120,78 @@ VAR combine = 0
     = forestFire
 {
     - fire == 1 && water == 1 && combine == 2:
-        * [Combine elements]
-            You have made steam
+        + [Combine Elements]
+            You have made steam and disappered from view.
+            You have come to the end of the tutorial.
+            ~ fire = fire - 1
+            ~ water = water - 1
+            ~ combine = combine - 2
         -> return1
     
+    - fire == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you've created lava and burned yourself severely.
+            + +[Try Again?]
+                ~ fire = fire - 1
+                ~ earth = earth - 1
+                ~ combine = combine - 2
+                -> forestFire
+    
+    - fire == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have spontaneously combusted.
+                + + [Try Again?]
+                    ~ fire = fire - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                -> forestFire
+    
+    - water == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created mud and gotten your clothes dirty
+                + + [Try Again?]
+                    ~ water = water - 1
+                    ~ earth = earth - 1
+                    ~ combine = combine - 2
+                -> forestFire
+                
+    - water == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations dark storm clouds have appeared above you as torrential
+            rain pours down on you, you're now drenched.
+                + + [Try Again?]
+                  ~ water = water - 1
+                  ~ air = air - 1
+                  ~ combine = combine - 2
+                -> forestFire
+                
+    - earth == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created a sandstorm and it's getting in your eyes
+            you have successfully blinded and can no longer continue.
+                + + [Try Again?]
+                    ~ earth = earth - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                    -> forestFire
+                    
     - else:
+        This is WIP and is only here for the playtesting
         Which elements would you like to combine
     
-    * [Fire]
+    + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
     -> forestFire
-    * [Water]
+    + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
     -> forestFire
-    * [Earth]
+    + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
     -> forestFire
-    * [Air]
+    + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
     -> forestFire
