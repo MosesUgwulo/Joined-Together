@@ -31,5 +31,19 @@
 [Link to scrum board](https://trello.com/b/mNCEym6F/scrum-board-ca)
 <br>
 <br>
-## <u>Burndown chart</u>
+# <u>Burndown chart</u>
 ![Burndown chart](https://i.imgur.com/pQ4PGcK.png)
+<br>
+<br>
+# <u>Narrative Synopsis</u>
+![Narrative Synopsis](https://i.imgur.com/vqPCBbu.png)
+<br>
+<br>
+# <u>Character Profiles</u>
+![Character Profiles](https://i.imgur.com/FLqhdyF.png)
+<br>
+<br>
+# <u>Level Design</u>
+![Level Design](https://i.imgur.com/HLYK7fS.png)
+<br>
+<br>
