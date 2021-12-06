@@ -49,3 +49,5 @@
 [Link to full Game Design Doc](https://onedrive.live.com/edit.aspx?resid=90060A2AB6FEB93C!54601&ithint=file%2cdocx&authkey=!ACdYo7M2SBmuXD8)
 <br>
 <br>
+# <u>Link to playtest the game</u>
+![Playtest Game](https://meticulous1.itch.io/the-apothecary)
