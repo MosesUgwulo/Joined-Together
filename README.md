@@ -50,4 +50,4 @@
 <br>
 <br>
 # <u>Link to playtest the game</u>
-![Playtest Game](https://meticulous1.itch.io/the-apothecary)
+[Playtest Game](https://meticulous1.itch.io/the-apothecary)
