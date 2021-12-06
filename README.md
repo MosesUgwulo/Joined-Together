@@ -45,5 +45,6 @@
 <br>
 # <u>Level Design</u>
 ![Level Design](https://i.imgur.com/HLYK7fS.png)
+[Link to full Game Design Doc](https://onedrive.live.com/edit.aspx?resid=90060A2AB6FEB93C!54601&ithint=file%2cdocx&authkey=!ACdYo7M2SBmuXD8)
 <br>
 <br>
