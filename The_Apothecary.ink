@@ -6,11 +6,11 @@ VAR air = 0
 VAR earth = 0
 VAR combine = 0
 -> Tutorial.TheCampfire
-
+    
 === Tutorial
 
     = TheCampfire
-    
+        # IMAGE: Apot.png
         You approach the mouth of the forest. You give a drink of water to Gude, your daughter, from your waterskin. You can feel your daughter shivering in her blanket against your chest. As you enter the shadow of the trees at the entrance of the forest, you see an old fire pit in the centre of a clearing ahead of you.
         -> UnlitCampfire
         
