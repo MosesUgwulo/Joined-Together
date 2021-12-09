@@ -25,14 +25,17 @@ VAR combine = 0
             You see paths hidden in the shadow of the trees leading off to your left and right.
             There is a path ahead of you but you can see it is blocked by some fallen trees further ahead.
             * [Go left]
+             # CLEAR
             ~ secret = secret + 1
             -> left
             
             * [Go right]
+            # CLEAR
             ~ secret = secret + 1
             -> right
             
             * [Go straight]
+            # CLEAR
             ~ secret = secret + 1
             -> straight
             
@@ -44,10 +47,11 @@ VAR combine = 0
 
         = LightingTheFire
             * [Light the fire]
+            # CLEAR
                 You use the flint and steel horseshoe to light the campfire. You set down Gude next to the warmth of the fire. She quickly falls asleep. You hold out your hands to warm yourself. 
                 Suddenly, sparks shoot out from within the flames and surge towards your palms! You watch as the magical wisps of flame dance at your finger tips. 
                 A warm mystical energy heats your very soul... You have gained the element of Fire!
-                -> testElement.forestFire
+                -> combineElements.burnTrees
 
     
     = right
@@ -58,6 +62,7 @@ VAR combine = 0
        - As you approach the gap and root around inside it, you find small shard of flint. Thinking it may prove useful, you put it into your pack.
 
     * [Go to campfire]
+    # CLEAR
     -> UnlitCampfire
     
     
@@ -77,8 +82,10 @@ VAR combine = 0
         You pick up the shovel. 
         It is clearly old, the head is almost completely rusted through and its handle is snapped at one end.
         **[Inspect the ruined cart]
+        # CLEAR
         -> cart
         **[Return to the campfire]
+        # CLEAR
         -> UnlitCampfire
         
         
@@ -93,11 +100,14 @@ VAR combine = 0
             You use the shovel to unearth the rest of the beasts remains.
             You acquired a steel horseshoe!
             * *[Return to the campfire]
+            # CLEAR
             -> UnlitCampfire
             - else:
             *[Approach the shovel]
+            # CLEAR
             -> shovel
             *[Return to the campfire]
+            # CLEAR
             -> UnlitCampfire
             }
             
@@ -105,22 +115,59 @@ VAR combine = 0
     = straight
     There are fallen trees in your path. It is impossible to make your way through them. Perhaps there is a way to clear away the trees and proceed onwards...
         * [Turn back]
+        # CLEAR
         -> UnlitCampfire
         * [Examine the trees]
+        # CLEAR
         -> Examine
         
 
         = Examine
         You inspect the fallen trees. There are slashes in their trunks. They seem to have been felled by an axe or another cutting implement.
         * [Go back to campfire]
+        # CLEAR
         -> UnlitCampfire
 
+    = findHerb
+    [DIALOGUE ABOUT FINDING HERB]
+        *[OPTION BOX IF NEEDED]
+            [MORE DIALOGUE IF NEEDED]
+                * *[ANOTHER OPTION IF NEEDED]
+                    [YOU GET THE PICTURE]
+                    -> enterTheForest
     
-=== testElement
-    = forestFire
+    
+    === enterTheForest
+    The end for now...
+    
+-> END
+
+
+=== combineElements
+
+    = burnTrees
+{
+    - fire == 1:
+       The element of fire dances from your hand and jumps towards the trees
+       burning away at them and clearing a path.
+        ~ fire = fire - 1
+        -> Tutorial.findHerb
+
+        - else:
+                +[Fire]
+                You approach some nearby trees
+                    ~ fire = fire + 1
+                    -> burnTrees
+                
+}
+
+
+
+/*    = toBeUsed
 {
     - fire == 1 && water == 1 && combine == 2:
         + [Combine Elements]
+        # CLEAR
             You have made steam and disappered from view.
             You have come to the end of the tutorial.
             ~ fire = fire - 1
@@ -132,6 +179,7 @@ VAR combine = 0
         + [Combine Elements]
             Congratulations you've created lava and burned yourself severely.
             + +[Try Again?]
+            # CLEAR
                 ~ fire = fire - 1
                 ~ earth = earth - 1
                 ~ combine = combine - 2
@@ -141,6 +189,7 @@ VAR combine = 0
         + [Combine Elements]
             Congratulations you have spontaneously combusted.
                 + + [Try Again?]
+                # CLEAR
                     ~ fire = fire - 1
                     ~ air = air - 1
                     ~ combine = combine - 2
@@ -150,6 +199,7 @@ VAR combine = 0
         + [Combine Elements]
             Congratulations you have created mud and gotten your clothes dirty
                 + + [Try Again?]
+                # CLEAR
                     ~ water = water - 1
                     ~ earth = earth - 1
                     ~ combine = combine - 2
@@ -160,6 +210,7 @@ VAR combine = 0
             Congratulations dark storm clouds have appeared above you as torrential
             rain pours down on you, you're now drenched.
                 + + [Try Again?]
+                # CLEAR
                   ~ water = water - 1
                   ~ air = air - 1
                   ~ combine = combine - 2
@@ -170,11 +221,52 @@ VAR combine = 0
             Congratulations you have created a sandstorm and it's getting in your eyes
             you have successfully blinded and can no longer continue.
                 + + [Try Again?]
+                # CLEAR
                     ~ earth = earth - 1
                     ~ air = air - 1
                     ~ combine = combine - 2
                     -> forestFire
                     
+    - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> forestFire
+                    
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water enough
+            to cause a tsunami in fact.
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> forestFire
+                    
+    - earth == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have created enough earth to bury
+            yourself alive.
+                ++[Try Again?]
+                # CLEAR
+                    ~ earth = earth - 2
+                    ~ combine = combine - 2
+                    -> forestFire
+                    
+    - air == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have drastically increased the amount of oxygen around you,
+            every single bug within your area starts to grow to 50 times their size and 
+            attacks you.
+                ++[Try Again?]
+                # CLEAR
+                    ~ air = air - 2
+                    ~ combine = combine - 2
+                    -> forestFire
     - else:
         This is WIP and is only here for the playtesting
         Which elements would you like to combine
@@ -195,8 +287,5 @@ VAR combine = 0
     ~ air = air + 1
     ~ combine = combine + 1
     -> forestFire
-}
+}*/
 
-= return1
-
--> END
