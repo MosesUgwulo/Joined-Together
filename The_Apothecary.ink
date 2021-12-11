@@ -44,7 +44,6 @@ VAR combine = 0
         
         }
         
-
         = LightingTheFire
             * [Light the fire]
             # CLEAR
@@ -134,11 +133,100 @@ VAR combine = 0
             [MORE DIALOGUE IF NEEDED]
                 * *[ANOTHER OPTION IF NEEDED]
                     [YOU GET THE PICTURE]
-                    -> enterTheForest
+                    # CLEAR
+                    -> enterTheForest.theForest
     
     
-    === enterTheForest
-    The end for now...
+=== enterTheForest
+    
+    = theForest
+    [DIALOGUE ABOUT THE FOREST IF YOU WANT]
+        *[Venture onwards]
+            [You notice your daughter is looking flushed]
+                **[Check on her]
+                    -> daughtersFever
+                    
+                **[Let her suffer]
+                    -> suffer
+                    
+    = daughtersFever
+    You check her temperature with your hand and she's burning up.
+    You decide to go and look for some water for her to drink.
+        *[Go find water]
+            -> findWaterPT1
+            
+            = findWaterPT1
+            [DIALOGUE WHILE GOING TO FIND WATER, one of the options below can lead to forest sprites
+                or we could have them go down each path and then come back to find the forest sprites
+                checking out his daughter]
+                **[Path 1]
+                -> path1
+                
+                **[Path 2]
+                -> path2
+                
+                **[Path 3]
+                -> path3
+                
+                **[After 3 paths checked, find spritea taking daughter]
+                    -> chaseSprites
+    
+    = suffer
+    You sick fuck, you're just going to let her suffer like that?
+        *[Check on her]
+        -> daughtersFever
+    
+    = path1
+    [DIALOGUE HERE]
+        *[OPTION 1]
+            [MORE DIALOGUE]
+                **[ANOTHER OPTION IF NEEDED]
+        -            SOME MORE DIALOGUE IF NEEDED
+                    
+        *[OTHER OPTION HERE OR GO BACK]
+            [MORE DIALOGUE IF NEEDED]
+                -> findWaterPT1
+            
+    
+    = path2
+    [DIALOGUE HERE]
+        *[OPTION 1]
+            [MORE DIALGUE]
+                **[ANOTHER OPTION]
+                    [EVEN MORE DIALGUE]
+                     -> findWaterPT1
+                            
+     
+    =path3
+    [DIALOGUE HERE]
+        *[OPTION 1]
+            [MORE DIALOGUE HERE]
+                **[ANOTHER OPTION]
+                    [EVEN MORE DIALGUE]
+                        -> findWaterPT1
+    
+    
+    = chaseSprites
+    [DIALOGUE OF YOU CHASING SPRITES]
+        *[SOMETHING HERE IDK]
+            [EVEN MORE DIALOGUE]
+                **[MORE OPTIONS IDK]
+                    [CATCH UP TO SPRITES]
+                    [FIND VILLAGE OF SPRITES, THEY TAKE CARE OF DAUGHTER]
+                        -> spriteVillage
+                        
+                        = spriteVillage
+                    [THEY TELL YOU WHERE TO FIND WATER]
+                        *[LEAVE TO GO GET WATER]
+                                [GET WATER ELEMENT]
+                                    **[RETURN BACK TO SPRITE VILLAGE]
+                                        [SEE DAUGHTER STABLIZED]
+                                            ***[THANK SPRITES AND LEAVE TO FIND HERB]
+                                                    -> findHerb2
+                                                    
+    = findHerb2
+    [SOME DIALOGUE ABOUT USING FIRE AND WATER TO FIND HERB - TBD]
+                                
     
 -> END
 
@@ -219,7 +307,7 @@ VAR combine = 0
     - earth == 1 && air == 1 && combine == 2:
         + [Combine Elements]
             Congratulations you have created a sandstorm and it's getting in your eyes
-            you have successfully blinded and can no longer continue.
+            you have successfully blinded yourself and can no longer continue.
                 + + [Try Again?]
                 # CLEAR
                     ~ earth = earth - 1
