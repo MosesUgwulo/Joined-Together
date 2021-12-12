@@ -128,19 +128,20 @@ VAR combine = 0
         -> UnlitCampfire
 
     = findHerb
-    [DIALOGUE ABOUT FINDING HERB]
-        *[OPTION BOX IF NEEDED]
-            [MORE DIALOGUE IF NEEDED]
-                * *[ANOTHER OPTION IF NEEDED]
-                    [YOU GET THE PICTURE]
+    As you walk down the path into the forest a peculiar but familiar bush with red berrys catches your eye.
+        *[Inspect the bush]
+            On closer inspection you recognise that this is a ginseng plant. Its roots are know to help heal the body and are believed to have magical restorative propertys.
+                * *[Harvest some ginseng root]
+                    You acquired some ginseng root. You placed it into your bag.
                     # CLEAR
+                    * * *[Enter the forest]
                     -> enterTheForest.theForest
     
     
 === enterTheForest
     
     = theForest
-    [DIALOGUE ABOUT THE FOREST IF YOU WANT]
+    Tall boreal trees tower above you. The trees create a thick canopy, blocking the sun from reaching the ground.
         *[Venture onwards]
             [You notice your daughter is looking flushed]
                 **[Check on her]
@@ -156,16 +157,14 @@ VAR combine = 0
             -> findWaterPT1
             
             = findWaterPT1
-            [DIALOGUE WHILE GOING TO FIND WATER, one of the options below can lead to forest sprites
-                or we could have them go down each path and then come back to find the forest sprites
-                checking out his daughter]
-                **[Path 1]
+            You venture further into the dark woods. You stop at an intersection of three paths. Down the left path you see a faint light break through the canopy. Down the middle path the path seem to become darker and near impossible to any further. The final path on the right is lined with flowers and wafts a floural scent in your direction.
+                **[Go Left]
                 -> path1
                 
-                **[Path 2]
+                **[Go Straight]
                 -> path2
                 
-                **[Path 3]
+                **[Go Right]
                 -> path3
                 
                 **[After 3 paths checked, find spritea taking daughter]
@@ -177,7 +176,7 @@ VAR combine = 0
         -> daughtersFever
     
     = path1
-    [DIALOGUE HERE]
+    You walk down the path and step into an opening in the woods. Light breaks through the canopy above you and shines onto...
         *[OPTION 1]
             [MORE DIALOGUE]
                 **[ANOTHER OPTION IF NEEDED]
@@ -189,28 +188,30 @@ VAR combine = 0
             
     
     = path2
-    [DIALOGUE HERE]
-        *[OPTION 1]
-            [MORE DIALGUE]
+    As you walk down the path your vision begins to fade and soon you are lost in the darkness.
+        *[Try and find a way back]
+            (Gude goes missing? set up fairys.)
                 **[ANOTHER OPTION]
                     [EVEN MORE DIALGUE]
                      -> findWaterPT1
                             
      
     =path3
-    [DIALOGUE HERE]
-        *[OPTION 1]
-            [MORE DIALOGUE HERE]
+    You walk down the flowery path and arrive at a meadow of gorgous sweet smelling flowers. 
+        *[Smell the flowers]
+        -   [MORE DIALOGUE HERE]
+        *[Inspect the flowers]
+        -   [Something?]
                 **[ANOTHER OPTION]
                     [EVEN MORE DIALGUE]
                         -> findWaterPT1
     
     
     = chaseSprites
-    [DIALOGUE OF YOU CHASING SPRITES]
-        *[SOMETHING HERE IDK]
-            [EVEN MORE DIALOGUE]
-                **[MORE OPTIONS IDK]
+    You see a group of forest sprites carrying Gude down a narrow forest path. 
+        *[Chase after them]
+            You pursue the sprites weaving around and under trees. 
+                **[Continue pursuit]
                     [CATCH UP TO SPRITES]
                     [FIND VILLAGE OF SPRITES, THEY TAKE CARE OF DAUGHTER]
                         -> spriteVillage
