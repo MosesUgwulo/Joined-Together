@@ -128,7 +128,7 @@ VAR combine = 0
         -> UnlitCampfire
 
     = findHerb
-    As you walk down the path into the forest a peculiar but familiar bush with red berrys catches your eye.
+    As you walk down the path into the forest a peculiar but familiar bush with red berries catches your eye.
         *[Inspect the bush]
             On closer inspection you recognise that this is a ginseng plant. Its roots are know to help heal the body and are believed to have magical restorative propertys.
                 * *[Harvest some ginseng root]
