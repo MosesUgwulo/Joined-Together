@@ -80,7 +80,7 @@ VAR combine = 0
         ~ shovelFound = true
         You pick up the shovel. 
         It is clearly old, the head is almost completely rusted through and its handle is snapped at one end.
-        **[Inspect the ruined cart]
+        **[Return to the ruined cart]
         # CLEAR
         -> cart
         **[Return to the campfire]
@@ -102,6 +102,7 @@ VAR combine = 0
             # CLEAR
             -> UnlitCampfire
             - else:
+            There doesn't seem to be anything you can do here at the moment.
             *[Approach the shovel]
             # CLEAR
             -> shovel
