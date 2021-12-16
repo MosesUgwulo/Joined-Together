@@ -196,8 +196,8 @@ VAR combine = 0
     = wakeUp
     You jerk awake and look around you. You are back at the intersection. You check your back for Gude, but she is no longer there. As you look around the area with fresh eyes. You realise that there is a low pathway snaking between the bottom of the undergrowth in front of you. 
         *[Crawl along the pathway]
-            You pursue the sprites weaving around and under trees. 
-                **[Continue pursuit]
+            You follow the pathway, crawling on your belly. After some time, you come out on the other side of the bushes. As you get too your feet, you see a cave entrance in front of you which is covered in overgrown vines. 
+                **[Approach the cave entrance]
                     [CATCH UP TO SPRITES]
                     [FIND VILLAGE OF SPRITES, THEY TAKE CARE OF DAUGHTER]
                         -> spriteVillage
