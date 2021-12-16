@@ -5,12 +5,16 @@ VAR water = 0
 VAR air = 0
 VAR earth = 0
 VAR combine = 0
+VAR flint = false
+VAR steel = false
+VAR fruit = 0
+VAR key = false
 -> Tutorial.TheCampfire
     
 === Tutorial
 
     = TheCampfire
-        # IMAGE: Apot.png
+        # IMAGE: Test.png
         You approach the mouth of the forest. You give a drink of water to Gude, your daughter, from your waterskin. You can feel your daughter shivering in her blanket against your chest. As you enter the shadow of the trees at the entrance of the forest, you see an old fire pit in the centre of a clearing ahead of you.
         -> UnlitCampfire
         
@@ -18,7 +22,11 @@ VAR combine = 0
         {
         
         - secret == 3:
-                With the horseshoe and the flint you have found, you can now attempt to light the fire.
+            With the horseshoe and the flint you have found, you can now attempt to light the fire.
+                -> LightingTheFire
+                
+        - secret == 2 && flint == true && steel == true:
+            With the horseshoe and the flint you have found, you can now attempt to light the fire.
                 -> LightingTheFire
             
         - else:
@@ -27,6 +35,7 @@ VAR combine = 0
             * [Go left]
              # CLEAR
             ~ secret = secret + 1
+            ~ steel = true
             -> left
             
             * [Go right]
@@ -58,6 +67,7 @@ VAR combine = 0
      * [Inspect the rocks]
        - As you climb between the rocks, your attention is drawn to a small gap between two rocks.
        * [Search the gap]
+       ~ flint = true
        - As you approach the gap and root around inside it, you find small shard of flint. Thinking it may prove useful, you put it into your pack.
 
     * [Go to campfire]
@@ -80,7 +90,7 @@ VAR combine = 0
         ~ shovelFound = true
         You pick up the shovel. 
         It is clearly old, the head is almost completely rusted through and its handle is snapped at one end.
-        **[Return to the ruined cart]
+        **[Go to the ruined cart]
         # CLEAR
         -> cart
         **[Return to the campfire]
@@ -96,6 +106,7 @@ VAR combine = 0
             {
             - shovelFound == true:
             *[Dig up the remains with the shovel]
+            ~ steel = true
             You use the shovel to unearth the rest of the beasts remains.
             You acquired a steel horseshoe!
             * *[Return to the campfire]
@@ -128,14 +139,26 @@ VAR combine = 0
         # CLEAR
         -> UnlitCampfire
 
+
     = exit
     You proceed down the now clear pathway and you come to the entrance of the the forest proper.
         # CLEAR
         *[Enter the forest]
-        -> enterTheForest.theForest
+        -> toWater.theForest
+
+    = findHerb
+    As you walk down the path into the forest a peculiar but familiar bush with red berries catches your eye.
+        *[Inspect the bush]
+            On closer inspection you recognise that this is a ginseng plant. Its roots are know to help heal the body and are believed to have magical restorative propertys.
+                * *[Harvest some ginseng root]
+                    You acquired some ginseng root. You placed it into your bag.
+                    # CLEAR
+                    * * *[Enter the forest]
+                    -> toWater.theForest
+
     
     
-=== enterTheForest
+=== toWater
     
     = theForest
     Tall boreal trees tower above you. The trees create a thick canopy, blocking the sun from reaching the ground.
@@ -213,8 +236,102 @@ VAR combine = 0
                                                     
     = findHerb2
     [SOME DIALOGUE ABOUT USING FIRE AND WATER TO FIND HERB - TBD]
+        -> ToEarth.Enter
+        
+=== ToEarth
+
+    = Enter
+    [ENTER IN THE CAVES AT THE BASE OF THE MOUNTAIN TEXT HERE]
+        *[Proceed]
+            [FIND HOUSE/CABIN]
+                **[ENTER HOUSE]
+                    [DAUGHTERS HUNGRY]
+                        ***[SEARCH HOUSE FOR FOOD]
+                            [THERES A FIREPLACE AND KITCHEN]
+                                -> search
                                 
+                                = search
+                                +[SEARCH FIREPLACE]
+                                    -> firePlace
+                                    
+                                +[SEARCH KITCHEN]
+                                    -> kitchen
     
+    
+    = firePlace
+{
+
+    - key == true:
+        [FIND SECRET PASSAGE]
+            -> secretPassage
+    
+    - else:
+        [FIND ALCOVE]
+        +[COME BACK LATER]
+            -> search
+
+}    
+
+    = kitchen
+{
+    
+    - key == true:
+        [YOU SEARCH THE KITCHEN AND FIND NOTHING]
+            *[Go back]
+                -> search
+    
+    - else:
+    [SEARCH KITCHEN AND FIND FRUIT]
+        *[PICK UP FRUIT]
+        ~ fruit = fruit + 1
+            [FEED DAUGHTER]
+                **[LEAVE HOUSE]
+                    -> cave
+}
+
+    = cave
+    [VENTURE INTO CAVE, FIND RUINS]
+        *[SEARCH RUIN]
+            [THERES A STOREROOM AND GUARD HOUSE]
+                -> theRuin
+                
+                = theRuin
+                **[SEARCH STOREROOM]
+                    -> storeroom
+                
+                **[SEARCH GUARD HOUSE]
+                    -> guardHouse
+                
+    
+    = storeroom
+    [SEARCH AROUND AND FIND ROTTING ROPE, WHICH IS USELESS]
+        -> theRuin
+        
+    = guardHouse
+        [SEARCH AROUND AND FIND KEY]
+            *[PICK UP KEY]
+            ~ key = true
+                [THE AIR GETS COLDER AROUND YOU, DEATH APPROACHES]
+                    **[FLEE DEATH]
+                        [RETURN TO THE HOUSE]
+                            -> search
+    
+    
+    = secretPassage
+    [ENTER SECRET PASSAGE]
+        *[FIND SECOND FRUIT]
+        ~ fruit = fruit + 1
+            [FLEE DEATH AGAIN]
+                **[KEEP FLEEING]
+                    [FIND EARTH]
+                        ***[PROCEED]
+                            [YOU SEE THE HERB ACROSS ALOT OF WATER]
+                                ****[USE ELEMENTS]
+                                    -> combineElements.getAcrossWater
+    
+    
+=== toAir
+    = Enter
 -> END
 
 
@@ -236,7 +353,171 @@ VAR combine = 0
                 
 }
 
+    = getAcrossWater
+{
 
+    - fire == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            YOU CREATE MAGMA OVER THE WATER TO COOL IT DOWN AND TURN IT
+            TO ROCK SO YOU CAN WALK OVER IT TO GET THE HERB.
+            ~ fire = fire - 1
+            ~ earth = earth - 1
+            ~ combine = combine - 2
+                ++ [ESCAPE THE CAVE]
+                    WHILE YOU'RE ESCAPING YOU SEE A LIGHT COMING FROM HIGH UP
+                    YOU THINK OF A WAY TO REACH THE EXIT OF THE CAVE.
+                        +++[USE ELEMENTS]
+                -> escapeCave
+    
+    - fire == 1 && water == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created steam and can no 
+            longer see where you're going, you fall into the water
+            and drown.
+                ++[Try Again?]
+                # CLEAR
+                ~ fire = fire - 1
+                ~ water = water - 1
+                ~ combine = combine - 2
+                    -> getAcrossWater
+
+    - water == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created mud and gotten your clothes dirty
+                + + [Try Again?]
+                # CLEAR
+                    ~ water = water - 1
+                    ~ earth = earth - 1
+                    ~ combine = combine - 2
+                -> getAcrossWater
+        
+    
+    - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> getAcrossWater
+    
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water enough to fill up 
+            the space that you're in and so you drown.
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> getAcrossWater
+
+    - earth == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have created enough earth to bury
+            yourself alive.
+                ++[Try Again?]
+                # CLEAR
+                    ~ earth = earth - 2
+                    ~ combine = combine - 2
+                    -> getAcrossWater
+                    
+                    
+    - else:
+    + [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    -> getAcrossWater
+    
+    + [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    -> getAcrossWater
+    
+    + [Earth]
+    ~ earth = earth + 1
+    ~ combine = combine + 1
+    -> getAcrossWater
+}
+
+    = escapeCave
+{
+    
+    - fire == 1 && water == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created steam and can no 
+            longer see where you're going, you walk around for a while,
+            trip over a rock and smash your head into the side of the cave
+            and bleed out.
+                ++[Try Again?]
+                # CLEAR
+                ~ fire = fire - 1
+                ~ water = water - 1
+                ~ combine = combine - 2
+                    -> escapeCave
+    
+    - fire == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you've created lava and burned yourself severely.
+            + +[Try Again?]
+            # CLEAR
+                ~ fire = fire - 1
+                ~ earth = earth - 1
+                ~ combine = combine - 2
+                -> escapeCave
+        
+    
+    - water == 1 && earth == 1 && combine == 2:
+        You create mud and use it to make steps for you to
+        climb up towards the exit to the cave.
+            -> toAir.Enter
+
+        - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> escapeCave
+    
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water enough to fill up 
+            the space that you're in and so you drown.
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> escapeCave
+
+    - earth == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have created enough earth to bury
+            yourself alive.
+                ++[Try Again?]
+                # CLEAR
+                    ~ earth = earth - 2
+                    ~ combine = combine - 2
+                    -> escapeCave
+
+    - else:
+    + [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    -> escapeCave
+    
+    + [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    -> escapeCave
+    
+    + [Earth]
+    ~ earth = earth + 1
+    ~ combine = combine + 1
+    -> escapeCave
+}
 
 /*    = toBeUsed
 {
