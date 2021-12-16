@@ -241,20 +241,20 @@ VAR key = false
 === ToEarth
 
     = Enter
-    [ENTER IN THE CAVES AT THE BASE OF THE MOUNTAIN TEXT HERE]
+    You walk further into the forest and encounter the mouth of a cave leading up the mountain. You enter the cave a notice as the space becomes tighter as you ascend. You see light shining through an exit ahead of you. 
         *[Proceed]
-            [FIND HOUSE/CABIN]
-                **[ENTER HOUSE]
-                    [DAUGHTERS HUNGRY]
-                        ***[SEARCH HOUSE FOR FOOD]
-                            [THERES A FIREPLACE AND KITCHEN]
+            You step out of the cave into a frostbitten landscape. The tall pine trees around you are iced with snow and you see a small abandoned log cabin infront of you.
+                **[Enter the cabin]
+                    You step inside the old wooden cabin and find nothing of interest. You and Gude sit on an old chair for moment. Your moment of calm is interupted by the sounds of Gude's stomach rumbling.
+                        ***[Search the cabin for food]
+                            You pick up Gude and stand. You see a fireplace and a makeshift kitchen. 
                                 -> search
                                 
                                 = search
-                                +[SEARCH FIREPLACE]
+                                +[Inspect fireplace]
                                     -> firePlace
                                     
-                                +[SEARCH KITCHEN]
+                                +[Inspect kitchen]
                                     -> kitchen
     
     
@@ -281,39 +281,39 @@ VAR key = false
                 -> search
     
     - else:
-    [SEARCH KITCHEN AND FIND FRUIT]
-        *[PICK UP FRUIT]
+    You dig through the old presses and find single apple in a wicker bowl.
+        *[Take the apple]
         ~ fruit = fruit + 1
-            [FEED DAUGHTER]
-                **[LEAVE HOUSE]
+            You pick up the apple. It is perfectly ripe except for a lone bruse on one side. You take a moment to feed the apple to Gude. Gude devours the fruit with haste. Her stomach continues to rumble...
+                **[Leave cabin to continue searching]
                     -> cave
 }
 
     = cave
-    [VENTURE INTO CAVE, FIND RUINS]
-        *[SEARCH RUIN]
-            [THERES A STOREROOM AND GUARD HOUSE]
+    You step back outside into the snowy woods. You take glance at your surroundings and take notice of another cave entrance. You peek your head inside the cave and see pillars and a stone pathway inside leading to the entrance of a ruined house.
+        *[Search the ruins]
+            You walk in and inspect the ruined house. You stand in open room with two doors to each side. You see stone tablets above each of these doors. The left reads "Storeroom" and the right reads "Guard House".
                 -> theRuin
                 
                 = theRuin
-                **[SEARCH STOREROOM]
+                **[Inspect storeroom]
                     -> storeroom
                 
-                **[SEARCH GUARD HOUSE]
+                **[Inspect guard house]
                     -> guardHouse
                 
     
     = storeroom
-    [SEARCH AROUND AND FIND ROTTING ROPE, WHICH IS USELESS]
+    You walk into the storeroom. There is nothing but empty shelves and mold. You return to the main room.
         -> theRuin
         
     = guardHouse
-        [SEARCH AROUND AND FIND KEY]
-            *[PICK UP KEY]
+        You walk into the guard house. There are empty shelves and boarded up holes to the outside. You notice a shiny gold key hanging from a hook on the wall.
+            *[Take key]
             ~ key = true
-                [THE AIR GETS COLDER AROUND YOU, DEATH APPROACHES]
-                    **[FLEE DEATH]
-                        [RETURN TO THE HOUSE]
+                As your hands grasp the key the cold of the metal seems to penetrate your whole body. You feel something jagged grasp your leg. You turn and look down at horrific, skeletal amalgam with appendages resembling scythe blades. A boney hand reaches up moving towards Gude. 
+                    **[Run]
+                        You break free the abominations grasp and run back to the main room. The entrance is now blocked by felled trees. You see...
                             -> search
     
     
