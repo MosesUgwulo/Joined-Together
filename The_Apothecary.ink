@@ -158,58 +158,40 @@ VAR combine = 0
             -> findWaterPT1
             
             = findWaterPT1
-            You venture further into the dark woods. You stop at an intersection of three paths. Down the left path you see a faint light break through the canopy. Down the middle path the path seem to become darker and near impossible to any further. The final path on the right is lined with flowers and wafts a floural scent in your direction.
+            You venture further into the dark woods. You stop at an intersection of two paths. To your left you see a faint light break through the canopy. The path on the right leads between densely packed trees which submerge the area deeper inside in darkness.
                 **[Go Left]
-                -> path1
-                
-                **[Go Straight]
-                -> path2
+                -> pathLeft
                 
                 **[Go Right]
-                -> path3
-                
-                **[After 3 paths checked, find spritea taking daughter]
-                    -> chaseSprites
+                -> pathRight
     
     = suffer
     You sick fuck, you're just going to let her suffer like that?
         *[Check on her]
         -> daughtersFever
     
-    = path1
-    You walk down the path and step into an opening in the woods. Light breaks through the canopy above you and shines onto...
-        *[OPTION 1]
-            [MORE DIALOGUE]
-                **[ANOTHER OPTION IF NEEDED]
-        -            SOME MORE DIALOGUE IF NEEDED
-                    
-        *[OTHER OPTION HERE OR GO BACK]
-            [MORE DIALOGUE IF NEEDED]
-                -> findWaterPT1
-            
+    = pathLeft
+    You walk down the path and step into an opening in the woods. Light breaks through the canopy above you and shines onto a ancient, gnarled tree stump.
+        *[Approach the tree stump]
+            As you approach the tree stump, you begin to smell an enticing scent wafting from it. As you get closer, the smell begins to draw you in and you feel your mind drifting off.
+                **[Continue approaching the stump]
+        -            You continue to approach the stump. The smell drags you onward     until finally you stand in front of the stump. Your hand, as if          possessing a mind of it's own, reaches out to grab the stump. As your     hand touches the stump, the smell grows overpowering and your            consciouness grows hazy. You fall to the ground, unconscious.
+                        -> wakeUp
+                **[Back away]
+                    You turn away and start walking away from the stump. As you move further away, the smell begins to grow weaker. Suddenly, as if angered, the smell from the stump surges back into your senses. Your mind feels as if it is full of wool and you distantly feel yourself falling to the ground as you fall into unconciousness. 
+                    -> wakeUp
     
-    = path2
+    = pathRight
     As you walk down the path your vision begins to fade and soon you are lost in the darkness.
         *[Try and find a way back]
             (Gude goes missing? set up fairys.)
                 **[ANOTHER OPTION]
                     [EVEN MORE DIALGUE]
                      -> findWaterPT1
-                            
-     
-    =path3
-    You walk down the flowery path and arrive at a meadow of gorgous sweet smelling flowers. 
-        *[Smell the flowers]
-        -   [MORE DIALOGUE HERE]
-        *[Inspect the flowers]
-        -   [Something?]
-                **[ANOTHER OPTION]
-                    [EVEN MORE DIALGUE]
-                        -> findWaterPT1
     
     
-    = chaseSprites
-    You see a group of forest sprites carrying Gude down a narrow forest path. 
+    = wakeUp
+    You jerk awake  
         *[Chase after them]
             You pursue the sprites weaving around and under trees. 
                 **[Continue pursuit]
