@@ -128,15 +128,11 @@ VAR combine = 0
         # CLEAR
         -> UnlitCampfire
 
-    = findHerb
-    As you walk down the path into the forest a peculiar but familiar bush with red berries catches your eye.
-        *[Inspect the bush]
-            On closer inspection you recognise that this is a ginseng plant. Its roots are know to help heal the body and are believed to have magical restorative propertys.
-                * *[Harvest some ginseng root]
-                    You acquired some ginseng root. You placed it into your bag.
-                    # CLEAR
-                    * * *[Enter the forest]
-                    -> enterTheForest.theForest
+    = exit
+    You proceed down the now clear pathway and you come to the entrance of the the forest proper.
+        # CLEAR
+        *[Enter the forest]
+        -> enterTheForest.theForest
     
     
 === enterTheForest
@@ -175,24 +171,31 @@ VAR combine = 0
         *[Approach the tree stump]
             As you approach the tree stump, you begin to smell an enticing scent wafting from it. As you get closer, the smell begins to draw you in and you feel your mind drifting off.
                 **[Continue approaching the stump]
-        -            You continue to approach the stump. The smell drags you onward     until finally you stand in front of the stump. Your hand, as if          possessing a mind of it's own, reaches out to grab the stump. As your     hand touches the stump, the smell grows overpowering and your            consciouness grows hazy. You fall to the ground, unconscious.
+                    You continue to approach the stump. The smell drags you onward     until finally you stand in front of the stump. Your hand, as if          possessing a mind of it's own, reaches out to grab the stump. As your     hand touches the stump, the smell grows overpowering and your            consciouness grows hazy. You fall to the ground, unconscious.
                         -> wakeUp
                 **[Back away]
                     You turn away and start walking away from the stump. As you move further away, the smell begins to grow weaker. Suddenly, as if angered, the smell from the stump surges back into your senses. Your mind feels as if it is full of wool and you distantly feel yourself falling to the ground as you fall into unconciousness. 
                     -> wakeUp
     
     = pathRight
-    As you walk down the path your vision begins to fade and soon you are lost in the darkness.
-        *[Try and find a way back]
-            (Gude goes missing? set up fairys.)
-                **[ANOTHER OPTION]
-                    [EVEN MORE DIALGUE]
-                     -> findWaterPT1
-    
-    
+    As you walk down the path your vision begins to fade and soon you are lost in the darkness. You begin to feel as if you are being watched, and you can hear rustling within the undergrowth surrounding the path.
+        *[Turn back]
+            As you turn back towards the crossroads, the rustling grows louder. Suddenly, a ball of pink glowing energy flies out from between the trees and hits your chest. You reel back from the blast and you feel yourself collapse before you fall unconcious.
+            -> wakeUp
+        *[Proceed onwards]
+            You proceed further down the shadowy path. Suddenly, a childlike laugh echoes all around you.
+                **[Turn back]
+                    As you turn back towards the crossroads, the rustling grows louder. Suddenly, a ball of pink glowing energy flies out from between the trees and hits your chest. You reel back from the blast and you feel yourself collapse before you fall unconcious.
+                    -> wakeUp
+                **[Sprint forward]
+                You start sprinting down the rest of the path as quickly as you can manage. Suddenly, you turn a corner and see a small glowing orb hovering in front of you. The orb begins to fly towards you and as you are attempting to stop, it slams into you. 
+                The air is knocked from your lungs and you stumble to the ground, wheezing. Your head smacks off the trunk of a tree and you begin to feel your conciousness fade. As you regard the orb through watery eyes, you can make out the outline of a small person within before you collapse into unconciousness.
+                    ***[Continue]
+                    -> wakeUp
+            
     = wakeUp
-    You jerk awake  
-        *[Chase after them]
+    You jerk awake and look around you. You are back at the intersection. You check your back for Gude, but she is no longer there. As you look around the area with fresh eyes. You realise that there is a low pathway snaking between the bottom of the undergrowth in front of you. 
+        *[Crawl along the pathway]
             You pursue the sprites weaving around and under trees. 
                 **[Continue pursuit]
                     [CATCH UP TO SPRITES]
@@ -223,7 +226,7 @@ VAR combine = 0
        The element of fire dances from your hand and jumps towards the trees
        burning away at them and clearing a path.
         ~ fire = fire - 1
-        -> Tutorial.findHerb
+        -> Tutorial.exit
 
         - else:
                 +[Fire]
