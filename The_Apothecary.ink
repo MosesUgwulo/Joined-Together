@@ -139,13 +139,13 @@ VAR key = false
         # CLEAR
         -> UnlitCampfire
 
-<<<<<<< Updated upstream
+
     = exit
     You proceed down the now clear pathway and you come to the entrance of the the forest proper.
         # CLEAR
         *[Enter the forest]
-        -> enterTheForest.theForest
-=======
+        -> toWater.theForest
+
     = findHerb
     As you walk down the path into the forest a peculiar but familiar bush with red berries catches your eye.
         *[Inspect the bush]
@@ -155,7 +155,7 @@ VAR key = false
                     # CLEAR
                     * * *[Enter the forest]
                     -> toWater.theForest
->>>>>>> Stashed changes
+
     
     
 === toWater
