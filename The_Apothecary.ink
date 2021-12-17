@@ -194,7 +194,7 @@ VAR key = false
         *[Approach the tree stump]
             As you approach the tree stump, you begin to smell an enticing scent wafting from it. As you get closer, the smell begins to draw you in and you feel your mind drifting off.
                 **[Continue approaching the stump]
-                    You continue to approach the stump. The smell drags you onward     until finally you stand in front of the stump. Your hand, as if          possessing a mind of it's own, reaches out to grab the stump. As your     hand touches the stump, the smell grows overpowering and your            consciouness grows hazy. You fall to the ground, unconscious.
+                    You continue to approach the stump. The smell drags you onward     until finally you stand in front of the stump. Your hand, as if possessing a mind of it's own, reaches out to grab the stump. As your hand touches the stump, the smell grows overpowering and your consciouness grows hazy. You fall to the ground, unconscious.
                         -> wakeUp
                 **[Back away]
                     You turn away and start walking away from the stump. As you move further away, the smell begins to grow weaker. Suddenly, as if angered, the smell from the stump surges back into your senses. Your mind feels as if it is full of wool and you distantly feel yourself falling to the ground as you fall into unconciousness. 
@@ -214,6 +214,7 @@ VAR key = false
                 You start sprinting down the rest of the path as quickly as you can manage. Suddenly, you turn a corner and see a small glowing orb hovering in front of you. The orb begins to fly towards you and as you are attempting to stop, it slams into you. 
                 The air is knocked from your lungs and you stumble to the ground, wheezing. Your head smacks off the trunk of a tree and you begin to feel your conciousness fade. As you regard the orb through watery eyes, you can make out the outline of a small person within before you collapse into unconciousness.
                     ***[Continue]
+                    #clear
                     -> wakeUp
             
     = wakeUp
@@ -221,14 +222,21 @@ VAR key = false
         *[Crawl along the pathway]
             You follow the pathway, crawling on your belly. After some time, you come out on the other side of the bushes. As you get too your feet, you see a cave entrance in front of you which is covered in overgrown vines. 
                 **[Approach the cave entrance]
-                    [CATCH UP TO SPRITES]
-                    [FIND VILLAGE OF SPRITES, THEY TAKE CARE OF DAUGHTER]
-                        -> spriteVillage
+                    You walk to the entrance of the cave. Upon closer inspection, you see that the vines have become so intertwined that the cave beyond is inaccessible in it's current state.
+                        ***[Use Fire]
+                        You channel your connection to the element of fire and flames surge from your hands, burning away the vines.
+                        ****[Enter the cave]
+                            You make your way into the cave, using your fire to light the way. After a few minutes, you see an opening with sunlight shining through it.
+                            *****[Walk through the opening]
+                            -> spriteVillage
                         
                         = spriteVillage
-                    [THEY TELL YOU WHERE TO FIND WATER]
-                        *[LEAVE TO GO GET WATER]
-                                [GET WATER ELEMENT]
+                        You shield your eyes from the sunlight as you exit the cave opening. Once your eyes adjust, you look around and see that your are in a settlement of some kind. You see tens of small light orbs flitting around from place to place and gathering within tree hollows. 
+                        
+                        As you are looking around, one of the light orbs approaches you.
+                        *[Continue]
+                        #clear
+                                The light orb stops in front of you and the light surrounding it begins to dim. 
                                     **[RETURN BACK TO SPRITE VILLAGE]
                                         [SEE DAUGHTER STABLIZED]
                                             ***[THANK SPRITES AND LEAVE TO FIND HERB]
@@ -340,14 +348,13 @@ VAR key = false
     = burnTrees
 {
     - fire == 1:
-       The element of fire dances from your hand and jumps towards the trees
-       burning away at them and clearing a path.
+       The element of fire dances from your hand and jumps towards the trees burning away at them and clearing a path.
         ~ fire = fire - 1
         -> Tutorial.exit
 
         - else:
                 +[Fire]
-                You approach some nearby trees
+                You proceed down the straight path and approach the trees blocking your way.
                     ~ fire = fire + 1
                     -> burnTrees
                 
