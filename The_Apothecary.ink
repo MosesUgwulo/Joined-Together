@@ -270,12 +270,12 @@ VAR key = false
 {
 
     - key == true:
-        [FIND SECRET PASSAGE]
+        You check the alcove of the fireplace and find a keyhole in the wall. You insert the gold key and the alcove opens to reveal a passageway.
             -> secretPassage
     
     - else:
-        [FIND ALCOVE]
-        +[COME BACK LATER]
+        You inspect the fireplace and find nothing but an alcove with charred logs at its base. You do however take notice of a small key hole in the wall.
+        +[Search the cabin]
             -> search
 
 }    
@@ -284,7 +284,7 @@ VAR key = false
 {
     
     - key == true:
-        [YOU SEARCH THE KITCHEN AND FIND NOTHING]
+        You frantically search the kitchen only to find nothing of interest. 
             *[Go back]
                 -> search
     
@@ -321,20 +321,48 @@ VAR key = false
             ~ key = true
                 As your hands grasp the key the cold of the metal seems to penetrate your whole body. You feel something jagged grasp your leg. You turn and look down at horrific, skeletal amalgam with appendages resembling scythe blades. A boney hand reaches up moving towards Gude. 
                     **[Run]
-                        You break free the abominations grasp and run back to the main room. The entrance is now blocked by felled trees. You see...
-                            -> search
+                        You break free the abominations grasp and run back to the main room. The entrance is now blocked by felled trees. Panicked you look around for a way out. As the creature pulls itself closer...
+                        -> findEscape
+                
+                = findEscape
+                **[Try Entrance]
+                    -> entrancedeath
+                
+                **[Search Storeroom]
+                    -> storeroom2
+                    
+    = entrancedeath
+    You run towards the entrance. With all your strength you attempt to move the fallen trees in your path. 
+    
+    It's no use... 
+    
+    The amalgam takes Gude and delivers a slash across your body. Your vision begins to fade as you watch Gude get taken away. Everything goes black...
+    -> END
+    
+    = storeroom2
+    You run into the storeroom. At first glance you see nothing that can help you. The abomination approaches and blocks the doorway. You look up and see a passage to the outside. You pull yourself and Gude up into the passage and back out into the forest area. You hear the creature travelling up the passage, pursuing the both of you. You must hide...
+            *[Go to cabin]
+                 You arrive back at the cabin. You hear the sounds of metal grinding against bone getting closer. Maybe something here can help?
+                         -> search
     
     
     = secretPassage
-    [ENTER SECRET PASSAGE]
-        *[FIND SECOND FRUIT]
+    You enter into a long tunnel that transitions into a large open cave. A hole in the roof of the cavern allows light in and on the floor under the hole lies a patch of snow and a single apple.
+        *[Take apple]
         ~ fruit = fruit + 1
-            [FLEE DEATH AGAIN]
-                **[KEEP FLEEING]
-                    [FIND EARTH]
-                        ***[PROCEED]
-                            [YOU SEE THE HERB ACROSS ALOT OF WATER]
-                                ****[USE ELEMENTS]
+            You pick up the fruit and feed it to Gude. She seems satisfied with the meal and falls asleep your arms. You stand with your daughter resting in your hands and let out a sigh of relief.
+            
+            The sound of grinding metal approaches behind you...
+            
+            "Its" found you both again. You must flee.
+                **[Run]
+                    You run deeper and deeper into the cave. You notice the passageways begin to slope upwards. You see a glimmering purple light shining at the end of a passage. You cannot hear the monster anymore. Your safe for now. You approach the light and enter a cavern glimmering floor to ceiling with crystals and exposed geodes.
+                    
+                        A river divides the open cavern in two. On the other side of the river you see an opening on the ceiling of the cave and plants growing on the ground below.
+                        ***[Inspect the stones]
+                            You reach out and touch the brilliant magenta crystals lining the walls. The light they let off shines through your body and feels as if it illuminates your very soul. You away your hand. You feel tougher and more strong then you did before... you gained the element of Stone!
+                                ****[Attempt to cross river]
+                                Your elemental alchemy should be able to help you cross the river...
                                     -> combineElements.getAcrossWater
     
     
@@ -365,15 +393,12 @@ VAR key = false
 
     - fire == 1 && earth == 1 && combine == 2:
         + [Combine Elements]
-            YOU CREATE MAGMA OVER THE WATER TO COOL IT DOWN AND TURN IT
-            TO ROCK SO YOU CAN WALK OVER IT TO GET THE HERB.
+            The elements mix and they form a bridge of magma across the river. The water cools the magma into stone. You and Gude cross with no trouble. You inspect the plants on the ground and find a bush of mistletoe. You take a sprig and put it into your bag.
             ~ fire = fire - 1
             ~ earth = earth - 1
             ~ combine = combine - 2
-                ++ [ESCAPE THE CAVE]
-                    WHILE YOU'RE ESCAPING YOU SEE A LIGHT COMING FROM HIGH UP
-                    YOU THINK OF A WAY TO REACH THE EXIT OF THE CAVE.
-                        +++[USE ELEMENTS]
+                ++ [Look around]
+                    You search your surroundings but find nothing. The only way out seems to be through the opening above you. Your elements can aid you again...
                 -> escapeCave
     
     - fire == 1 && water == 1 && combine == 2:
@@ -434,16 +459,19 @@ VAR key = false
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
+    Add cinders...
     -> getAcrossWater
     
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
+    Add vapour...
     -> getAcrossWater
     
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
+    Add stone...
     -> getAcrossWater
 }
 
