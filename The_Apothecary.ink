@@ -350,7 +350,6 @@ VAR key = false
     You enter into a long tunnel that transitions into a large open cave. A hole in the roof of the cavern allows light in and on the floor under the hole lies a patch of snow and a single apple.
         *[Take apple]
         ~ fruit = fruit + 1
-<<<<<<< Updated upstream
             You pick up the fruit and feed it to Gude. She seems satisfied with the meal and falls asleep your arms. You stand with your daughter resting in your hands and let out a sigh of relief.
             
             The sound of grinding metal approaches behind you...
@@ -364,15 +363,7 @@ VAR key = false
                             You reach out and touch the brilliant magenta crystals lining the walls. The light they let off shines through your body and feels as if it illuminates your very soul. You away your hand. You feel tougher and more strong then you did before... you gained the element of Stone!
                                 ****[Attempt to cross river]
                                 Your elemental alchemy should be able to help you cross the river...
-=======
-            [FLEE DEATH AGAIN]
-                **[KEEP FLEEING]
-                    [FIND EARTH]
-                        ***[PROCEED]
-                            [YOU SEE THE HERB ACROSS ALOT OF WATER]
-                                ****[Use Elements]
->>>>>>> Stashed changes
-                                    -> combineElements.getAcrossWater
+                                -> combineElements.getAcrossWater
     
     
 === toAir
@@ -416,7 +407,7 @@ VAR key = false
     [GETTING THE HERB]
         *[KEEP GOING]
             [CONTINUE UP MOUNTAIN AS DEATH IS IN PURSUIT]
-                *[TRANSITION INTO FINAL LEVEL]
+                **[TRANSITION INTO FINAL LEVEL]
         
     
 -> END
