@@ -509,6 +509,51 @@ VAR finalDoor = 0
                 
 }
 
+    = theWasps
+{
+
+    - fire == 1 && water == 1 && combine == 2:
+        +[Combine Elements]
+            You create steam to knock out the pesky wasps.
+                ~ fire = fire - 1
+                ~ water = water - 1
+                ~ combine = combine - 2
+                -> ToEarth.Enter
+    
+   - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> theWasps
+    
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water enough to fill up 
+            the space that you're in and so you drown.
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> theWasps
+
+    - else:
+    + [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    Add cinders...
+    -> theWasps
+    
+    + [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    Add vapour...
+    -> theWasps
+}
+
     = getAcrossWater
 {
 
