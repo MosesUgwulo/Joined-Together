@@ -9,6 +9,7 @@ VAR flint = false
 VAR steel = false
 VAR fruit = 0
 VAR key = false
+VAR finalDoor = 0
 -> Tutorial.TheCampfire
     
 === Tutorial
@@ -359,7 +360,10 @@ VAR key = false
     -> END
     
     = storeroom2
-    You run into the storeroom. At first glance you see nothing that can help you. The abomination approaches and blocks the doorway. You look up and see a passage to the outside. You pull yourself and Gude up into the passage and back out into the forest area. You hear the creature travelling up the passage, pursuing the both of you. You must hide...
+    You run into the storeroom. At first glance you see nothing that can help you. 
+    The abomination approaches and blocks the doorway. You look up and see a passage to the outside. 
+    You pull yourself and Gude up into the passage and back out into the forest area. 
+    You hear the creature travelling up the passage, pursuing the both of you. You must hide...
             *[Go to cabin]
                  You arrive back at the cabin. You hear the sounds of metal grinding against bone getting closer. Maybe something here can help?
                          -> search
@@ -375,11 +379,15 @@ VAR key = false
             
             "Its" found you both again. You must flee.
                 **[Run]
-                    You run deeper and deeper into the cave. You notice the passageways begin to slope upwards. You see a glimmering purple light shining at the end of a passage. You cannot hear the monster anymore. Your safe for now. You approach the light and enter a cavern glimmering floor to ceiling with crystals and exposed geodes.
+                    You run deeper and deeper into the cave. You notice the passageways begin to slope upwards. 
+                    You see a glimmering purple light shining at the end of a passage. You cannot hear the monster anymore. 
+                    Your safe for now. You approach the light and enter a cavern glimmering floor to ceiling with crystals and exposed geodes.
                     
                         A river divides the open cavern in two. On the other side of the river you see an opening on the ceiling of the cave and plants growing on the ground below.
                         ***[Inspect the stones]
-                            You reach out and touch the brilliant magenta crystals lining the walls. The light they let off shines through your body and feels as if it illuminates your very soul. You away your hand. You feel tougher and more strong then you did before... you gained the element of Stone!
+                            You reach out and touch the brilliant magenta crystals lining the walls. 
+                            The light they let off shines through your body and feels as if it illuminates your very soul. 
+                            You away your hand. You feel tougher and more strong then you did before... you gained the element of Stone!
                                 ****[Attempt to cross river]
                                 Your elemental alchemy should be able to help you cross the river...
                                 -> combineElements.getAcrossWater
@@ -427,10 +435,58 @@ VAR key = false
         *[KEEP GOING]
             [CONTINUE UP MOUNTAIN AS DEATH IS IN PURSUIT]
                 **[TRANSITION INTO FINAL LEVEL]
-        
+                    -> thePeak.Enter
+
+=== thePeak
+
+    = Enter
+{
+
+    - finalDoor == 3:
+        [THE FINAL DOOR OPENS]
+        *[Open the final door]
+            ~ finalDoor = finalDoor - 3
+            -> finalDoorOpens
+    
+    - else:
+    [REACH THE PEAK OF THE MOUNTAIN, FIND ANCIENT RUIN]
+        *[ENTER ANCIENT RUIN]
+            [COME ACROSS 3 DOORS]
+            
+                **[ICE DOOR]
+                    ~ finalDoor = finalDoor + 1
+                    -> iceDoor
+               
+                **[LIGHTNING DOOR]
+                    ~ finalDoor = finalDoor + 1
+                    -> lightningDoor
+                
+                **[METAIL DOOR]
+                    ~ finalDoor = finalDoor + 1
+                    -> metalDoor
+}
+
+    = iceDoor
+    [A TASK PRESENTS ITSELF, CREATE ICE]
+        *[Use Elements]
+            -> combineElements.iceDoor    
+    
+    = lightningDoor
+    [A TASK PRESENTS ITSELF, CREATE LIGHTNING]
+        *[Use Elements]
+            -> combineElements.lightningDoorPT1    
+    
+    = metalDoor
+    [A TASK PRESENTS ITSELF, CREATE METAL]
+        *[Use Elements]
+            -> combineElements.metalDoorPT1
+
+    = finalDoorOpens    
+     [GET THE FINAL HERB]
+        *[COMBINE ALL OF THE HERBS]
+            
     
 -> END
-
 
 === combineElements
 
@@ -784,7 +840,7 @@ VAR key = false
     
     - fire == 1 && water == 1 && combine == 2:
         + [Combine Elements]
-            Congratulations you have created steam, I guess if you can't see the problem
+            Congratulations you have created steam, I guess if you can't see the problem,
             then is it really there?
                 ++[Try Again?]
                 # CLEAR
@@ -814,7 +870,82 @@ VAR key = false
                     ~ combine = combine - 2
                 -> toAir.getHerb    
     
+    - water == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created mud and gotten your clothes dirty... AGAIN
+            Where do you keep getting these new pairs of clothes, it's getting ridiculous.
+                + + [Try Again?]
+                # CLEAR
+                    ~ water = water - 1
+                    ~ earth = earth - 1
+                    ~ combine = combine - 2
+                -> landSlide
     
+    - water == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations dark storm clouds have appeared above you as torrential
+            rain pours down on you, you're now drenched.
+                + + [Try Again?]
+                # CLEAR
+                  ~ water = water - 1
+                  ~ air = air - 1
+                  ~ combine = combine - 2
+                -> landSlide
+    
+    - earth == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created a sandstorm and it's getting in your eyes
+            you have successfully blinded yourself and can no longer continue.
+                + + [Try Again?]
+                # CLEAR
+                    ~ earth = earth - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                    -> landSlide
+    
+    - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair. Downgraded from magma to just regular fire I see, too 
+            bad it was the same result.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> landSlide
+    
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water enough
+            to cause a tsunami in fact. I don't know how you've managed
+            to create a tsunami on top of a mountain but I guess nothings
+            impossible right?
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> landSlide
+    
+    - earth == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have created enough earth to bury
+            yourself alive. That's a personal fear of mine, sucks to be you i guess.
+                ++[Try Again?]
+                # CLEAR
+                    ~ earth = earth - 2
+                    ~ combine = combine - 2
+                    -> landSlide
+    
+    - air == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have drastically increased the amount of oxygen around you,
+            every single bug within your area starts to grow to 50 times their size.
+            Gigantic ladybugs, cicadas and ants rise up to expel you from life.
+                ++[Try Again?]
+                # CLEAR
+                    ~ air = air - 2
+                    ~ combine = combine - 2
+                    -> landSlide
     
     - else:
     + [Fire]
@@ -833,6 +964,649 @@ VAR key = false
     ~ air = air + 1
     ~ combine = combine + 1
     -> landSlide
+}
+
+
+= iceDoor
+{
+
+    - fire == 1 && water == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created steam and... well nothing happens
+            the steam just kinda lingers around.
+                ++[Try Again?]
+                # CLEAR
+                ~ fire = fire - 1
+                ~ water = water - 1
+                ~ combine = combine - 2
+                    -> iceDoor
+
+    - fire == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created magma and not only have you
+            melted away all the ice in the room, you've also melted yourself away.
+            
+            + +[Try Again?]
+            # CLEAR
+                ~ fire = fire - 1
+                ~ earth = earth - 1
+                ~ combine = combine - 2
+                -> iceDoor
+
+    - fire == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations fireballs and self combustions for everyone!
+            + +[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                -> iceDoor
+
+    - water == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created mud and gotten your clothes dirty... AGAIN
+            Where do you keep getting these new pairs of clothes, it's getting ridiculous.
+                + + [Try Again?]
+                # CLEAR
+                    ~ water = water - 1
+                    ~ earth = earth - 1
+                    ~ combine = combine - 2
+                -> iceDoor
+
+    - water == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            You have created the perfect amount of ice.
+                # CLEAR
+                  ~ water = water - 1
+                  ~ air = air - 1
+                  ~ combine = combine - 2
+                    ++ [Go Back]
+                -> thePeak.Enter
+
+    - earth == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created a sandstorm and it's getting in your eyes
+            you have successfully blinded yourself and can no longer continue.
+                + + [Try Again?]
+                # CLEAR
+                    ~ earth = earth - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                    -> iceDoor
+
+    - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair. Downgraded from magma to just regular fire I see, too 
+            bad it was the same result.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> iceDoor
+    
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water, enough
+            to cause a tsunami in fact but due to how cold the room is 
+            the giant waves freeze up. So close and yet so far.
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> iceDoor
+
+    - earth == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have created enough earth to bury
+            yourself alive. That's a personal fear of mine, sucks to be you i guess.
+                ++[Try Again?]
+                # CLEAR
+                    ~ earth = earth - 2
+                    ~ combine = combine - 2
+                    -> iceDoor
+
+    - air == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have drastically increased the amount of oxygen around you...
+            nothing happens.
+                ++[Try Again?]
+                # CLEAR
+                    ~ air = air - 2
+                    ~ combine = combine - 2
+                    -> iceDoor
+    
+    - else:
+    + [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    -> iceDoor
+    + [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    -> iceDoor
+    + [Earth]
+    ~ earth = earth + 1
+    ~ combine = combine + 1
+    -> iceDoor
+    + [Air]
+    ~ air = air + 1
+    ~ combine = combine + 1
+    -> iceDoor
+}
+
+= lightningDoorPT1
+{
+
+    - fire == 1 && water == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created steam and... well nothing happens
+            the steam just kinda lingers around.
+                ++[Try Again?]
+                # CLEAR
+                ~ fire = fire - 1
+                ~ water = water - 1
+                ~ combine = combine - 2
+                    -> lightningDoorPT1
+
+    - fire == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created magma and not only have you
+            melted away all the ice in the room, you've also melted yourself away.
+            
+            + +[Try Again?]
+            # CLEAR
+                ~ fire = fire - 1
+                ~ earth = earth - 1
+                ~ combine = combine - 2
+                -> lightningDoorPT1
+
+    - fire == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations fireballs and self combustions for everyone!
+            + +[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                -> lightningDoorPT1
+
+    - water == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created mud and gotten your clothes dirty... AGAIN
+            Where do you keep getting these new pairs of clothes, it's getting ridiculous.
+                + + [Try Again?]
+                # CLEAR
+                    ~ water = water - 1
+                    ~ earth = earth - 1
+                    ~ combine = combine - 2
+                -> lightningDoorPT1
+    
+    - water == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            You've completeled part 1 of the trial
+                ++[Combine Elements again]
+                ~ water = water - 1
+                ~ air = air - 1
+                ~ combine = combine - 2
+                    -> lightningDoorPT2
+                    
+    
+    - earth == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created a sandstorm and it's getting in your eyes
+            you have successfully blinded yourself and can no longer continue.
+                + + [Try Again?]
+                # CLEAR
+                    ~ earth = earth - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                    -> lightningDoorPT1
+
+    - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair. Downgraded from magma to just regular fire I see, too 
+            bad it was the same result.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> lightningDoorPT1
+    
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water, but
+            due to the high amounts of electricty in the room you end up
+            shocking yourself to death.
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> lightningDoorPT1
+
+    - earth == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have created enough earth to bury
+            yourself alive. That's a personal fear of mine, sucks to be you i guess.
+                ++[Try Again?]
+                # CLEAR
+                    ~ earth = earth - 2
+                    ~ combine = combine - 2
+                    -> lightningDoorPT1
+
+    - air == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have drastically increased the amount of oxygen around you...
+            nothing happens.
+                ++[Try Again?]
+                # CLEAR
+                    ~ air = air - 2
+                    ~ combine = combine - 2
+                    -> lightningDoorPT1   
+    
+    
+   - else:
+    + [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    -> lightningDoorPT1
+    + [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    -> lightningDoorPT1
+    + [Earth]
+    ~ earth = earth + 1
+    ~ combine = combine + 1
+    -> lightningDoorPT1
+    + [Air]
+    ~ air = air + 1
+    ~ combine = combine + 1
+    -> lightningDoorPT1 
+}
+
+= lightningDoorPT2
+{
+    - fire == 1 && water == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created steam and... well nothing happens
+            the steam just kinda lingers around.
+                ++[Try Again?]
+                # CLEAR
+                ~ fire = fire - 1
+                ~ water = water - 1
+                ~ combine = combine - 2
+                    -> lightningDoorPT2
+
+    - fire == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created magma and not only have you
+            melted away all the ice in the room, you've also melted yourself away.
+            
+            + +[Try Again?]
+            # CLEAR
+                ~ fire = fire - 1
+                ~ earth = earth - 1
+                ~ combine = combine - 2
+                -> lightningDoorPT2
+
+    - fire == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            You have passed the second half of the trial
+                ++[Go Back]
+                # CLEAR
+                    ~ fire = fire - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                -> thePeak.Enter
+
+    - water == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created mud and gotten your clothes dirty... AGAIN
+            Where do you keep getting these new pairs of clothes, it's getting ridiculous.
+                + + [Try Again?]
+                # CLEAR
+                    ~ water = water - 1
+                    ~ earth = earth - 1
+                    ~ combine = combine - 2
+                -> lightningDoorPT2
+    
+    - water == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            It may have worked the first time buddy but you're going to need to
+            try something else.
+                ++[Try Again?]
+                ~ water = water - 1
+                ~ air = air - 1
+                ~ combine = combine - 2
+                    -> lightningDoorPT2
+                    
+    
+    - earth == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created a sandstorm and it's getting in your eyes
+            you have successfully blinded yourself and can no longer continue.
+                + + [Try Again?]
+                # CLEAR
+                    ~ earth = earth - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                    -> lightningDoorPT2
+
+    - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair. Downgraded from magma to just regular fire I see, too 
+            bad it was the same result.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> lightningDoorPT2
+    
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water, but
+            due to the high amounts of electricty in the room you end up
+            shocking yourself to death.
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> lightningDoorPT2
+
+    - earth == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have created enough earth to bury
+            yourself alive. That's a personal fear of mine, sucks to be you i guess.
+                ++[Try Again?]
+                # CLEAR
+                    ~ earth = earth - 2
+                    ~ combine = combine - 2
+                    -> lightningDoorPT2
+
+    - air == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have drastically increased the amount of oxygen around you...
+            nothing happens.
+                ++[Try Again?]
+                # CLEAR
+                    ~ air = air - 2
+                    ~ combine = combine - 2
+                    -> lightningDoorPT2   
+    
+    
+   - else:
+    + [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    -> lightningDoorPT2
+    + [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    -> lightningDoorPT2
+    + [Earth]
+    ~ earth = earth + 1
+    ~ combine = combine + 1
+    -> lightningDoorPT2
+    + [Air]
+    ~ air = air + 1
+    ~ combine = combine + 1
+    -> lightningDoorPT2
+}
+
+= metalDoorPT1
+{
+
+    - fire == 1 && water == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created steam and... well nothing happens
+            the steam just kinda lingers around.
+                ++[Try Again?]
+                # CLEAR
+                ~ fire = fire - 1
+                ~ water = water - 1
+                ~ combine = combine - 2
+                    -> metalDoorPT1
+
+    - fire == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            You've comepleted the first part of this trial.
+            # CLEAR
+                ~ fire = fire - 1
+                ~ earth = earth - 1
+                ~ combine = combine - 2
+                -> metalDoorPT2
+
+    - fire == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations fireballs and self combustions for everyone!
+            + +[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                -> metalDoorPT1
+
+   - water == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created mud and gotten your clothes dirty... AGAIN
+            Where do you keep getting these new pairs of clothes, it's getting ridiculous.
+                + + [Try Again?]
+                # CLEAR
+                    ~ water = water - 1
+                    ~ earth = earth - 1
+                    ~ combine = combine - 2
+                -> metalDoorPT1
+    
+    - water == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations dark storm clouds have appeared above you as torrential
+            rain pours down on you, you're now drenched. Yes we will gloss over the 
+            fact that you're indoors.
+                + + [Try Again?]
+                # CLEAR
+                  ~ water = water - 1
+                  ~ air = air - 1
+                  ~ combine = combine - 2
+                -> metalDoorPT1
+    
+    - earth == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created a sandstorm and it's getting in your eyes
+            you have successfully blinded yourself and can no longer continue.
+                + + [Try Again?]
+                # CLEAR
+                    ~ earth = earth - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                    -> metalDoorPT1
+    
+    - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair. Downgraded from magma to just regular fire I see, too 
+            bad it was the same result.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> metalDoorPT1
+    
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water enough
+            to cause a tsunami in fact.
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> metalDoorPT1
+    
+    - earth == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have created enough earth to bury
+            yourself alive. That's a personal fear of mine, sucks to be you i guess.
+                ++[Try Again?]
+                # CLEAR
+                    ~ earth = earth - 2
+                    ~ combine = combine - 2
+                    -> metalDoorPT1
+    
+    - air == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have drastically increased the amount of oxygen around you...
+            nothing happens.
+                ++[Try Again?]
+                # CLEAR
+                    ~ air = air - 2
+                    ~ combine = combine - 2
+                    -> metalDoorPT1 
+
+    - else:
+    + [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    -> metalDoorPT1
+    + [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    -> metalDoorPT1
+    + [Earth]
+    ~ earth = earth + 1
+    ~ combine = combine + 1
+    -> metalDoorPT1
+    + [Air]
+    ~ air = air + 1
+    ~ combine = combine + 1
+    -> metalDoorPT1
+}
+
+= metalDoorPT2
+{
+    - fire == 1 && water == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created steam and... well nothing happens
+            the steam just kinda lingers around.
+                ++[Try Again?]
+                # CLEAR
+                ~ fire = fire - 1
+                ~ water = water - 1
+                ~ combine = combine - 2
+                    -> metalDoorPT2
+
+    - fire == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            It may have worked the first time buddy but you're going to need to
+            try something else.
+                ++[Try Again?]
+            # CLEAR
+                ~ fire = fire - 1
+                ~ earth = earth - 1
+                ~ combine = combine - 2
+                -> metalDoorPT2
+
+    - fire == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations fireballs and self combustions for everyone!
+            + +[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                -> metalDoorPT2
+
+   - water == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created mud and gotten your clothes dirty... AGAIN
+            Where do you keep getting these new pairs of clothes, it's getting ridiculous.
+                + + [Try Again?]
+                # CLEAR
+                    ~ water = water - 1
+                    ~ earth = earth - 1
+                    ~ combine = combine - 2
+                -> metalDoorPT2
+    
+    - water == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            You have completed the second half of the trial
+                + + [Go Back]
+                # CLEAR
+                  ~ water = water - 1
+                  ~ air = air - 1
+                  ~ combine = combine - 2
+                -> thePeak.Enter
+    
+    - earth == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created a sandstorm and it's getting in your eyes
+            you have successfully blinded yourself and can no longer continue.
+                + + [Try Again?]
+                # CLEAR
+                    ~ earth = earth - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                    -> metalDoorPT2
+    
+    - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair. Downgraded from magma to just regular fire I see, too 
+            bad it was the same result.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> metalDoorPT2
+    
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water enough
+            to cause a tsunami in fact.
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> metalDoorPT2
+    
+    - earth == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have created enough earth to bury
+            yourself alive. That's a personal fear of mine, sucks to be you i guess.
+                ++[Try Again?]
+                # CLEAR
+                    ~ earth = earth - 2
+                    ~ combine = combine - 2
+                    -> metalDoorPT2
+    
+    - air == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have drastically increased the amount of oxygen around you...
+            nothing happens.
+                ++[Try Again?]
+                # CLEAR
+                    ~ air = air - 2
+                    ~ combine = combine - 2
+                    -> metalDoorPT2 
+
+    - else:
+    + [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    -> metalDoorPT2
+    + [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    -> metalDoorPT2
+    + [Earth]
+    ~ earth = earth + 1
+    ~ combine = combine + 1
+    -> metalDoorPT2
+    + [Air]
+    ~ air = air + 1
+    ~ combine = combine + 1
+    -> metalDoorPT2    
 }
 
 /*    = toBeUsed
