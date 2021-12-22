@@ -240,8 +240,9 @@ VAR finalDoor = 0
     = wakeUp
     You jerk awake and look around you. You are back at the intersection. You check your back for Gude, but she is no longer there. As you look around the area with fresh eyes. You realise that there is a low pathway snaking between the bottom of the undergrowth in front of you. 
         *[Crawl along the pathway]
+        #CLEAR
         # IMAGE: OvergrownCave.png
-            You follow the pathway, crawling on your belly. After some time, you come out on the other side of the bushes. As you get too your feet, you see a cave entrance in front of you which is covered in overgrown vines. 
+            You follow the pathway, crawling on your belly. After some time, you come out on the other side of the bushes. As you get too your feet, you see a cave entrance in front of you which is covered in overgrown vines.
                 **[Approach the cave entrance]
                     You walk to the entrance of the cave. Upon closer inspection, you see that the vines have become so intertwined that the cave beyond is inaccessible in it's current state.
                         ***[Use Fire]
@@ -272,6 +273,7 @@ VAR finalDoor = 0
                                             *[Continue]
                                             The sprite leads you to a large lake which is glowing with a faint blue light from below. The sprite points at the source of the light and gestures for you to enter the lake.
                                             **[Enter the Lake]
+                                            #CLEAR
                                             # IMAGE: Water.png
                                                 You walk into the lake and begin to swim down towards the source of the blue light. As you get closer, you can make out that the light is coming from a pool of blue liquid at the bottom of the pool.
                                                 As you approach the liquid and reach out towards it, it surges towards your hand. Congratualtions, you have gained access to the element of Water!
@@ -291,7 +293,7 @@ VAR finalDoor = 0
     # CLEAR
     # IMAGE: Bees.png
     After healing Gude, the sprites point the two of you in the direction of the second herb you need. You follow the directions of the sprites and return to the cave on the edge of the village. You hear a buzzing noise and you see that the thistle plant you need is still surrounded by wasps.
-        -> combineElements
+        -> combineElements.theWasps
         
 === ToEarth
 
