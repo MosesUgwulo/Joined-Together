@@ -232,26 +232,45 @@ VAR key = false
                         
                         = spriteVillage
                         You shield your eyes from the sunlight as you exit the cave opening. Once your eyes adjust, you look around and see that your are in a settlement of some kind. You see tens of small light orbs flitting around from place to place and gathering within tree hollows. 
-                        
-                        As you are looking around, one of the light orbs approaches you.
                         *[Continue]
                         #clear
-                                The light orb stops in front of you and the light surrounding it begins to dim. 
-                                    **[RETURN BACK TO SPRITE VILLAGE]
-                                        [SEE DAUGHTER STABLIZED]
-                                            ***[THANK SPRITES AND LEAVE TO FIND HERB]
-                                                    -> findHerb2
-                                                    
+                        
+                        One of the light orbs approaches you. As it comes closer, the light surrounding it begins to dim and you can make out that there is a small person within the orb. They have a pair of luminescent wings on their back. They stop in front of you and gesture with their hands for you to follow.
+                        **[Follow them]
+                            ->followSprite
+                        **[Attack the Sprite]
+                            ->attackSprite
+                            
+                            =followSprite
+                                    You follow the sprite as they lead you through the village. Eventually, you come to a stone circle, where you see Gude placed upon a stone plinth in the centre. The sprites are tending to her, but you can see that she is still feverish. 
+                                    You move to approach her, but the sprite stops you and gestures for you to continue following them.
+                                            *[Continue]
+                                            #clear
+                                            The sprite leads you to a large lake which is glowing with a faint blue light from below. The sprite points at the source of the light and gestures for you to enter the lake.
+                                            **[Enter the Lake]
+                                                You walk into the lake and begin to swim down towards the source of the blue light. As you get closer, you can make out that the light is coming from a pool of blue liquid at the bottom of the pool.
+                                                As you approach the liquid and reach out towards it, it surges towards your hand. Congratualtions, you have gained access to the element of Water!
+                                                ***[Continue]
+                                                #clear
+                                                You swim back to the edge of the lake. As you walk back onto the shore of the lake, you and the sprite return to the stone circle. You stand in front of the plint where Gude lies, feverish.
+                                                ****[Use Water]
+                                                You reach out and access your link to Water to channel the cooling aspect of water into Gude. A blue water vapour covers Gude and her breathing settles. You check her temperature and find that her fever has cleared.
+                                        -> findHerb2
+                            
+                            =attackSprite
+                            You lunge forward to attack the sprite. It looks at you in shock before flying backwards and blasting you with magic. You keel over dead when it hits you.
+                            That didn't go very well.
+                            ->END
     = findHerb2
-    [SOME DIALOGUE ABOUT USING FIRE AND WATER TO FIND HERB - TBD]
-        -> ToEarth.Enter
+    After healing Gude, the sprites point the two of you in the direction of the second herb you need. You follow the directions of the sprites and you find a clearing where a ginseng bush stands. However, as you approach the bush, you hear a buzzing noise and you see that the bush is surrounded by bees.
+        -> combineElements.
         
 === ToEarth
 
     = Enter
-    You walk further into the forest and encounter the mouth of a cave leading up the mountain. You enter the cave a notice as the space becomes tighter as you ascend. You see light shining through an exit ahead of you. 
+    You walk further into the forest and encounter the mouth of a cave leading up the mountain. You enter the cave. After some time, you notice the space is becoming tighter as you ascend. You see light shining through an exit ahead of you. 
         *[Proceed]
-            You step out of the cave into a frostbitten landscape. The tall pine trees around you are iced with snow and you see a small abandoned log cabin infront of you.
+            You step out of the cave into a frostbitten landscape. The tall pine trees around you are iced with snow and you see a small abandoned log cabin in front of you.
                 **[Enter the cabin]
                     You step inside the old wooden cabin and find nothing of interest. You and Gude sit on an old chair for moment. Your moment of calm is interupted by the sounds of Gude's stomach rumbling.
                         ***[Search the cabin for food]
