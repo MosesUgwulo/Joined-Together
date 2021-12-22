@@ -51,3 +51,6 @@
 <br>
 # <u>Link to playtest the game</u>
 [Playtest Game](https://meticulous1.itch.io/the-apothecary)
+
+# <u> Feedback </u>
+![Feedback](https://i.imgur.com/gqEXgf4.png)
