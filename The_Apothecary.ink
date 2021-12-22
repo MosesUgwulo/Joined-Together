@@ -10,12 +10,19 @@ VAR steel = false
 VAR fruit = 0
 VAR key = false
 VAR finalDoor = 0
--> Tutorial.TheCampfire
+-> Tutorial.Intro
     
 === Tutorial
 
+    = Intro
+    # IMAGE: ApotScreen.png
+    You are an Apothecary named Leigh. Your daughter, Gude, is gravely ill and you are verturing into a forest to gather herbs to make medicine for her.
+    * [START]
+    # CLEAR
+    -> TheCampfire
+
     = TheCampfire
-        # IMAGE: Test.png
+        # IMAGE: FireUnlit.png
         You approach the mouth of the forest. You give a drink of water to Gude, your daughter, from your waterskin. You can feel your daughter shivering in her blanket against your chest. As you enter the shadow of the trees at the entrance of the forest, you see an old fire pit in the centre of a clearing ahead of you.
         -> UnlitCampfire
         
@@ -35,12 +42,14 @@ VAR finalDoor = 0
             There is a path ahead of you but you can see it is blocked by some fallen trees further ahead.
             * [Go left]
              # CLEAR
+             # IMAGE: BigOak.png
             ~ secret = secret + 1
             ~ steel = true
             -> left
             
             * [Go right]
             # CLEAR
+            # IMAGE: FlintRock.png
             ~ secret = secret + 1
             -> right
             
@@ -57,6 +66,7 @@ VAR finalDoor = 0
         = LightingTheFire
             * [Light the fire]
             # CLEAR
+            # IMAGE: FireLit.png
                 You use the flint and steel horseshoe to light the campfire. You set down Gude next to the warmth of the fire. She quickly falls asleep. You hold out your hands to warm yourself. 
                 Suddenly, sparks shoot out from within the flames and surge towards your palms! You watch as the magical wisps of flame dance at your finger tips. 
                 A warm mystical energy heats your very soul... You have gained the element of Fire!
@@ -93,6 +103,7 @@ VAR finalDoor = 0
         It is clearly old, the head is almost completely rusted through and its handle is snapped at one end.
         **[Go to the ruined cart]
         # CLEAR
+        # IMAGE: OldCart.png
         -> cart
         **[Return to the campfire]
         # CLEAR
@@ -142,19 +153,21 @@ VAR finalDoor = 0
 
 
     = exit
-    You proceed down the now clear pathway and you come to the entrance of the the forest proper.
-        # CLEAR
+    # CLEAR
+    You proceed down the now clear pathway and into the forest.
         *[Enter the forest]
         -> toWater.theForest
 
     = findHerb
-    As you walk down the path into the forest a peculiar but familiar bush with red berries catches your eye.
+    As you walk down the path into the forest a peculiar but a familiar bush with red berries catches your eye.
         *[Inspect the bush]
             On closer inspection you recognise that this is a ginseng plant. Its roots are know to help heal the body and are believed to have magical restorative propertys.
                 * *[Harvest some ginseng root]
+                # IMAGE: Ginseng.png
                     You acquired some ginseng root. You placed it into your bag.
-                    # CLEAR
+                    
                     * * *[Enter the forest]
+                    # CLEAR
                     -> toWater.theForest
 
     
@@ -178,11 +191,14 @@ VAR finalDoor = 0
             -> findWaterPT1
             
             = findWaterPT1
+            # IMAGE: LightDarkPaths.png
             You venture further into the dark woods. You stop at an intersection of two paths. To your left you see a faint light break through the canopy. The path on the right leads between densely packed trees which submerge the area deeper inside in darkness.
                 **[Go Left]
+                # CLEAR
                 -> pathLeft
                 
                 **[Go Right]
+                # CLEAR
                 -> pathRight
     
     = suffer
@@ -209,29 +225,37 @@ VAR finalDoor = 0
         *[Proceed onwards]
             You proceed further down the shadowy path. Suddenly, a childlike laugh echoes all around you.
                 **[Turn back]
+                # IMAGE: MagicInDark.png
                     As you turn back towards the crossroads, the rustling grows louder. Suddenly, a ball of pink glowing energy flies out from between the trees and hits your chest. You reel back from the blast and you feel yourself collapse before you fall unconcious.
                     -> wakeUp
+                    # CLEAR
                 **[Sprint forward]
+                # IMAGE: MagicInDark.png
                 You start sprinting down the rest of the path as quickly as you can manage. Suddenly, you turn a corner and see a small glowing orb hovering in front of you. The orb begins to fly towards you and as you are attempting to stop, it slams into you. 
                 The air is knocked from your lungs and you stumble to the ground, wheezing. Your head smacks off the trunk of a tree and you begin to feel your conciousness fade. As you regard the orb through watery eyes, you can make out the outline of a small person within before you collapse into unconciousness.
                     ***[Continue]
-                    #clear
+                    # CLEAR
                     -> wakeUp
             
     = wakeUp
     You jerk awake and look around you. You are back at the intersection. You check your back for Gude, but she is no longer there. As you look around the area with fresh eyes. You realise that there is a low pathway snaking between the bottom of the undergrowth in front of you. 
         *[Crawl along the pathway]
+        # IMAGE: OvergrownCave.png
             You follow the pathway, crawling on your belly. After some time, you come out on the other side of the bushes. As you get too your feet, you see a cave entrance in front of you which is covered in overgrown vines. 
                 **[Approach the cave entrance]
                     You walk to the entrance of the cave. Upon closer inspection, you see that the vines have become so intertwined that the cave beyond is inaccessible in it's current state.
                         ***[Use Fire]
+                        # CLEAR 
+                        # IMAGE: Fire.png
                         You channel your connection to the element of fire and flames surge from your hands, burning away the vines.
                         ****[Enter the cave]
+                        # CLEAR
                             You make your way into the cave, using your fire to light the way. You see a vairety of plants growing within the cave, but they are surrounded by swarms of wasps, so you leave them be. After a few minutes, you see an opening with sunlight shining through it.
                             *****[Walk through the opening]
                             -> spriteVillage
                         
                         = spriteVillage
+                        # IMAGE: FairyVillage.png
                         You shield your eyes from the sunlight as you exit the cave opening. Once your eyes adjust, you look around and see that your are in a settlement of some kind. You see tens of small light orbs flitting around from place to place and gathering within tree hollows. 
                         *[Continue]
                         #clear
@@ -246,13 +270,14 @@ VAR finalDoor = 0
                                     You follow the sprite as they lead you through the village. Eventually, you come to a stone circle, where you see Gude placed upon a stone plinth in the centre. The sprites are tending to her, but you can see that she is still feverish. 
                                     You move to approach her, but the sprite stops you and gestures for you to continue following them.
                                             *[Continue]
-                                            #clear
                                             The sprite leads you to a large lake which is glowing with a faint blue light from below. The sprite points at the source of the light and gestures for you to enter the lake.
                                             **[Enter the Lake]
+                                            # IMAGE: Water.png
                                                 You walk into the lake and begin to swim down towards the source of the blue light. As you get closer, you can make out that the light is coming from a pool of blue liquid at the bottom of the pool.
                                                 As you approach the liquid and reach out towards it, it surges towards your hand. Congratualtions, you have gained access to the element of Water!
                                                 ***[Continue]
-                                                #clear
+                                                # CLEAR
+                                                # IMAGE: FairyVillage.png
                                                 You swim back to the edge of the lake. As you walk back onto the shore of the lake, you and the sprite return to the stone circle. You stand in front of the plint where Gude lies, feverish.
                                                 ****[Use Water]
                                                 You reach out and access your link to Water to channel the cooling aspect of water into Gude. A blue water vapour covers Gude and her breathing settles. You check her temperature and find that her fever has cleared.
@@ -263,6 +288,8 @@ VAR finalDoor = 0
                             That didn't go very well.
                             ->END
     = findHerb2
+    # CLEAR
+    # IMAGE: Bees.png
     After healing Gude, the sprites point the two of you in the direction of the second herb you need. You follow the directions of the sprites and return to the cave on the edge of the village. You hear a buzzing noise and you see that the thistle plant you need is still surrounded by wasps.
         -> combineElements
         
@@ -271,8 +298,11 @@ VAR finalDoor = 0
     = Enter
     You walk further into the forest and encounter the mouth of a cave leading up the mountain. You enter the cave. After some time, you notice the space is becoming tighter as you ascend. You see light shining through an exit ahead of you. 
         *[Proceed]
+        # CLEAR
+        # IMAGE: Cabin.png
             You step out of the cave into a frostbitten landscape. The tall pine trees around you are iced with snow and you see a small abandoned log cabin in front of you.
                 **[Enter the cabin]
+                # CLEAR
                     You step inside the old wooden cabin and find nothing of interest. You and Gude sit on an old chair for moment. Your moment of calm is interupted by the sounds of Gude's stomach rumbling.
                         ***[Search the cabin for food]
                             You pick up Gude and stand. You see a fireplace and a makeshift kitchen. 
@@ -290,12 +320,12 @@ VAR finalDoor = 0
 {
 
     - key == true:
-        [FIND SECRET PASSAGE]
+        You inspect the fireplace and find a keyhole in the alcove. You insert the key and the alcove opens revealing a secret passage
             -> secretPassage
     
     - else:
-        [FIND ALCOVE]
-        +[COME BACK LATER]
+        You inspect the alcove of the fireplace. There is a keyhole in the wall but nothing else.
+        +[Keep searching]
             -> search
 
 }    
@@ -304,7 +334,7 @@ VAR finalDoor = 0
 {
     
     - key == true:
-        [YOU SEARCH THE KITCHEN AND FIND NOTHING]
+        You search the kitchen and find nothing.
             *[Go back]
                 -> search
     
@@ -320,6 +350,8 @@ VAR finalDoor = 0
     = cave
     You step back outside into the snowy woods. You take glance at your surroundings and take notice of another cave entrance. You peek your head inside the cave and see pillars and a stone pathway inside leading to the entrance of a ruined house.
         *[Search the ruins]
+        # CLEAR
+        # IMAGE: Ruins.png
             You walk in and inspect the ruined house. You stand in open room with two doors to each side. You see stone tablets above each of these doors. The left reads "Storeroom" and the right reads "Guard House".
                 -> theRuin
                 
@@ -339,6 +371,8 @@ VAR finalDoor = 0
         You walk into the guard house. There are empty shelves and boarded up holes to the outside. You notice a shiny gold key hanging from a hook on the wall.
             *[Take key]
             ~ key = true
+            # CLEAR
+            # IMAGE: DeathRuins.png
                 As your hands grasp the key the cold of the metal seems to penetrate your whole body. You feel something jagged grasp your leg. You turn and look down at horrific, skeletal amalgam with appendages resembling scythe blades. A boney hand reaches up moving towards Gude. 
                     **[Run]
 
@@ -374,8 +408,11 @@ VAR finalDoor = 0
     
     
     = secretPassage
-    [ENTER SECRET PASSAGE]
-        *[FIND SECOND FRUIT]
+    # CLEAR 
+    # IMAGE: AppleSnow.png
+    You run into the passageway and end up in a cave with hole in the ceiling. Light from the opening illuminates a single apples lying on a bed of snow. in the cave.
+        *[Take the apple]
+        # CLEAR
         ~ fruit = fruit + 1
             You pick up the fruit and feed it to Gude. She seems satisfied with the meal and falls asleep your arms. You stand with your daughter resting in your hands and let out a sigh of relief.
             
@@ -383,16 +420,22 @@ VAR finalDoor = 0
             
             "Its" found you both again. You must flee.
                 **[Run]
+                # CLEAR
+                # IMAGE: GemCave.png
                     You run deeper and deeper into the cave. You notice the passageways begin to slope upwards. 
                     You see a glimmering purple light shining at the end of a passage. You cannot hear the monster anymore. 
                     Your safe for now. You approach the light and enter a cavern glimmering floor to ceiling with crystals and exposed geodes.
                     
                         A river divides the open cavern in two. On the other side of the river you see an opening on the ceiling of the cave and plants growing on the ground below.
                         ***[Inspect the stones]
+                        # CLEAR
+                        # IMAGE: Earth.png
                             You reach out and touch the brilliant magenta crystals lining the walls. 
                             The light they let off shines through your body and feels as if it illuminates your very soul. 
                             You away your hand. You feel tougher and more strong then you did before... you gained the element of Stone!
                                 ****[Attempt to cross river]
+                                # CLEAR
+                                # IMAGE: BushInCave.png
                                 Your elemental alchemy should be able to help you cross the river...
                                 -> combineElements.getAcrossWater
     
@@ -497,6 +540,8 @@ VAR finalDoor = 0
     = burnTrees
 {
     - fire == 1:
+    # CLEAR
+    # IMAGE: BlockBurned.png
        The element of fire dances from your hand and jumps towards the trees burning away at them and clearing a path.
         ~ fire = fire - 1
         -> Tutorial.exit
@@ -514,7 +559,9 @@ VAR finalDoor = 0
 
     - fire == 1 && water == 1 && combine == 2:
         +[Combine Elements]
-            You create steam to knock out the pesky wasps.
+        # CLEAR
+        # IMAGE: Thistle.png
+            You create steam to knock out the pesky wasps. You gather some thistle, place it in your bag and continue onwards.
                 ~ fire = fire - 1
                 ~ water = water - 1
                 ~ combine = combine - 2
@@ -559,15 +606,16 @@ VAR finalDoor = 0
 
     - fire == 1 && earth == 1 && combine == 2:
         + [Combine Elements]
-            You create magma over the water to cool it down and turn it
-            to rock so you can walk over it to get the herb
+        # CLEAR
+        # IMAGE: MistleToe.png
+            You create magma over the water. A bridge of stone forms leading you to the plants on the other side. You inspect one bush and find mistletoe. This shall do as an ingredient for your medicine. You take a spring and place it in your bag.
             ~ fire = fire - 1
             ~ earth = earth - 1
             ~ combine = combine - 2
-                ++ [ESCAPE THE CAVE]
-                    While you're escaping you see a light coming from high up
-                    you think of a way to reach the exit of the cave.
-                        +++[USE ELEMENTS]
+                ++ [Look around]
+                # CLEAR
+                    Ther seems to be no way out other then up. Your elements should be able to help you...
+                        +++[Use Elements]
                 -> escapeCave
     
     - fire == 1 && water == 1 && combine == 2:
@@ -628,16 +676,19 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
+    Add cinders...
     -> getAcrossWater
     
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
+    Add vapour...
     -> getAcrossWater
     
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
+    Add stone...
     -> getAcrossWater
 }
 
@@ -707,16 +758,19 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
+    Add cinders...
     -> escapeCave
     
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
+    Add Vapour...
     -> escapeCave
     
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
+    Add Stone...
     -> escapeCave
 }
     = ravine
@@ -785,16 +839,19 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
+    Add cinders...
     -> ravine
     
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
+    Add vapour...
     -> ravine
     
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
+    Add stone...
     -> ravine
 }
 
@@ -866,16 +923,19 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
+    Add cinders...
     -> throughRocks
     
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
+    Add vapour...
     -> throughRocks
     
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
+    Add stone...
     -> throughRocks
 }
 
@@ -995,18 +1055,22 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
+    Add cinders...
     -> landSlide
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
+    Add vapour...
     -> landSlide
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
+    Add stone...
     -> landSlide
     + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
+    Add wind...
     -> landSlide
 }
 
@@ -1125,18 +1189,22 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
+    Add cinders...
     -> iceDoor
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
+    Add vapour...
     -> iceDoor
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
+    Add stone...
     -> iceDoor
     + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
+    Add wind...
     -> iceDoor
 }
 
@@ -1255,18 +1323,22 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
+    Add cinders...
     -> lightningDoorPT1
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
+    Add vapour...
     -> lightningDoorPT1
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
+    Add stone...
     -> lightningDoorPT1
     + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
+    Add wind...
     -> lightningDoorPT1 
 }
 
@@ -1385,18 +1457,22 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
+    Add cinders...
     -> lightningDoorPT2
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
+    Add vapour...
     -> lightningDoorPT2
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
+    Add stone...
     -> lightningDoorPT2
     + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
+    Add wind...
     -> lightningDoorPT2
 }
 
@@ -1512,18 +1588,22 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
+    Add cinders...
     -> metalDoorPT1
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
+    Add vapour...
     -> metalDoorPT1
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
+    Add stone...
     -> metalDoorPT1
     + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
+    Add wind...
     -> metalDoorPT1
 }
 
@@ -1638,17 +1718,21 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
+    Add cinders...
     -> metalDoorPT2
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
+    Add vapour...
     -> metalDoorPT2
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
+    Add stone...
     -> metalDoorPT2
     + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
+    Add wind...
     -> metalDoorPT2    
 }
