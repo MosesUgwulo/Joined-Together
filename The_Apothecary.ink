@@ -14,7 +14,7 @@ VAR key = false
 === Tutorial
 
     = TheCampfire
-        # IMAGE: Test.png
+        # IMAGE: Apot.png
         You approach the mouth of the forest. You give a drink of water to Gude, your daughter, from your waterskin. You can feel your daughter shivering in her blanket against your chest. As you enter the shadow of the trees at the entrance of the forest, you see an old fire pit in the centre of a clearing ahead of you.
         -> UnlitCampfire
         
@@ -350,6 +350,7 @@ VAR key = false
     You enter into a long tunnel that transitions into a large open cave. A hole in the roof of the cavern allows light in and on the floor under the hole lies a patch of snow and a single apple.
         *[Take apple]
         ~ fruit = fruit + 1
+<<<<<<< Updated upstream
             You pick up the fruit and feed it to Gude. She seems satisfied with the meal and falls asleep your arms. You stand with your daughter resting in your hands and let out a sigh of relief.
             
             The sound of grinding metal approaches behind you...
@@ -363,11 +364,61 @@ VAR key = false
                             You reach out and touch the brilliant magenta crystals lining the walls. The light they let off shines through your body and feels as if it illuminates your very soul. You away your hand. You feel tougher and more strong then you did before... you gained the element of Stone!
                                 ****[Attempt to cross river]
                                 Your elemental alchemy should be able to help you cross the river...
+=======
+            [FLEE DEATH AGAIN]
+                **[KEEP FLEEING]
+                    [FIND EARTH]
+                        ***[PROCEED]
+                            [YOU SEE THE HERB ACROSS ALOT OF WATER]
+                                ****[Use Elements]
+>>>>>>> Stashed changes
                                     -> combineElements.getAcrossWater
     
     
 === toAir
     = Enter
+    [LEAVE CAVE]
+        *[CLIMB MOUTAIN]
+            [ARRIVE ON MOUNTAIN SIDE]
+                **[This is going to be a terrible night...]
+                    [DEATH REAPPEARS (CHASE SCENE)]
+                        ***[ESCAPE OVER RAVINE]
+                            [ABOUT TO GO OVER RAVINE]
+                                ****[Use Elements]
+                            -> combineElements.ravine
+                            
+                        ***[FLEE THROUGH ROCKS]
+                            [ABOUT TO FLEE THROUGH ROCKS]
+                                ****[Use Elements]
+                            -> combineElements.throughRocks
+    
+    = avoidDeath1
+    [AFTER JUMPING OVER RAVINE YOU KEEP RUNNING]
+    *[Proceed]
+        -> upMountain
+        
+    = avoidDeath2
+    [YOU WAIT UNTIL DEATH FLIES OVER]
+    *[Proceed]
+        ->upMountain
+    
+    = upMountain
+    [GOING UP MOUNTAIN, SEE TREE]
+        *[Investigate]
+            [FIND WIND CHIME, GAIN AIR]
+                **[Pick up wind chime]
+                    [PROCEED ON TO FIND HERB]
+                    [LAND SLIDE BLOCKS DA WAY]
+                        ***[Use Elements]
+                            -> combineElements.landSlide
+
+    = getHerb
+    [GETTING THE HERB]
+        *[KEEP GOING]
+            [CONTINUE UP MOUNTAIN AS DEATH IS IN PURSUIT]
+                *[TRANSITION INTO FINAL LEVEL]
+        
+    
 -> END
 
 
@@ -503,8 +554,12 @@ VAR key = false
         
     
     - water == 1 && earth == 1 && combine == 2:
+    + [Combine Elements]
         You create mud and use it to make steps for you to
         climb up towards the exit to the cave.
+            ~ water = water - 1
+            ~ earth = earth - 1
+            ~ combine = combine - 2
             -> toAir.Enter
 
         - fire == 2 && combine == 2:
@@ -552,6 +607,222 @@ VAR key = false
     ~ earth = earth + 1
     ~ combine = combine + 1
     -> escapeCave
+}
+
+    = ravine
+{
+
+    - fire == 1 && water == 1 && combine == 2:
+        +[Combine Elements]
+            You create enough pressurised steam to allow you to
+            fly over the ravine.
+                ~ fire = fire - 1
+                ~ water = water - 1
+                ~ combine = combine - 2
+                -> toAir.avoidDeath1
+    
+    - fire == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you've created lava and burned yourself severely.
+            + +[Try Again?]
+            # CLEAR
+                ~ fire = fire - 1
+                ~ earth = earth - 1
+                ~ combine = combine - 2
+                -> ravine
+    
+    - water == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created mud and gotten your clothes dirty
+                + + [Try Again?]
+                # CLEAR
+                    ~ water = water - 1
+                    ~ earth = earth - 1
+                    ~ combine = combine - 2
+                -> ravine
+
+    - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> ravine
+   
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water enough to fill up 
+            the space that you're in and so you drown.
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> ravine
+    
+    - earth == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have created enough earth to bury
+            yourself alive.
+                ++[Try Again?]
+                # CLEAR
+                    ~ earth = earth - 2
+                    ~ combine = combine - 2
+                    -> ravine
+
+    - else:
+    + [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    -> ravine
+    
+    + [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    -> ravine
+    
+    + [Earth]
+    ~ earth = earth + 1
+    ~ combine = combine + 1
+    -> ravine
+}
+
+ = throughRocks
+{
+    
+    - fire == 1 && water == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created steam and can no 
+            longer see where you're going, you walk around for a while,
+            trip over a rock and smash your head off of the other rocks lying around.
+                ++[Try Again?]
+                # CLEAR
+                ~ fire = fire - 1
+                ~ water = water - 1
+                ~ combine = combine - 2
+                    -> throughRocks
+ 
+    - fire == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you've created lava and burned yourself severely.
+            + +[Try Again?]
+            # CLEAR
+                ~ fire = fire - 1
+                ~ earth = earth - 1
+                ~ combine = combine - 2
+                -> throughRocks
+ 
+    - water == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            You become one with the earth and blend into the ground amongst the rocks.
+                # CLEAR
+                    ~ water = water - 1
+                    ~ earth = earth - 1
+                    ~ combine = combine - 2
+                -> toAir.avoidDeath2
+
+    - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> throughRocks
+   
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water enough to fill up 
+            the space that you're in and so you drown.
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> throughRocks
+    
+    - earth == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have created enough earth to bury
+            yourself alive.
+                ++[Try Again?]
+                # CLEAR
+                    ~ earth = earth - 2
+                    ~ combine = combine - 2
+                    -> throughRocks
+    
+    - else:
+    + [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    -> throughRocks
+    
+    + [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    -> throughRocks
+    
+    + [Earth]
+    ~ earth = earth + 1
+    ~ combine = combine + 1
+    -> throughRocks
+}
+
+= landSlide
+{
+    
+    - fire == 1 && water == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created steam, I guess if you can't see the problem
+            then is it really there?
+                ++[Try Again?]
+                # CLEAR
+                ~ fire = fire - 1
+                ~ water = water - 1
+                ~ combine = combine - 2
+                    -> landSlide
+
+    - fire == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Do you ever get tired of constantly burning yourself to death?
+            Or maybe you enjoy it? Either way I won't judge.
+            + +[Try Again?]
+            # CLEAR
+                ~ fire = fire - 1
+                ~ earth = earth - 1
+                ~ combine = combine - 2
+                -> landSlide
+    
+    - fire == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            You concentrate the fire along with air to create a fireball which
+            you launch at the pile of rocks.
+                # CLEAR
+                    ~ fire = fire - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                -> toAir.getHerb    
+    
+    
+    
+    - else:
+    + [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    -> landSlide
+    + [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    -> landSlide
+    + [Earth]
+    ~ earth = earth + 1
+    ~ combine = combine + 1
+    -> landSlide
+    + [Air]
+    ~ air = air + 1
+    ~ combine = combine + 1
+    -> landSlide
 }
 
 /*    = toBeUsed
