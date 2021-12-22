@@ -378,9 +378,6 @@ VAR finalDoor = 0
                 As your hands grasp the key the cold of the metal seems to penetrate your whole body. You feel something jagged grasp your leg. You turn and look down at horrific, skeletal amalgam with appendages resembling scythe blades. A boney hand reaches up moving towards Gude. 
                     **[Run]
 
-                        You break free the abominations grasp and run back to the main room. The entrance is now blocked by felled trees. You see...
-                            -> search
-
                         You break free the abominations grasp and run back to the main room. The entrance is now blocked by felled trees. Panicked you look around for a way out. As the creature pulls itself closer...
                         -> findEscape
                 
