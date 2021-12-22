@@ -49,7 +49,7 @@ VAR finalDoor = 0
             
             * [Go right]
             # CLEAR
-            # IMAGE: FlintRock.png
+             # IMAGE: FlintRock.png
             ~ secret = secret + 1
             -> right
             
@@ -57,10 +57,6 @@ VAR finalDoor = 0
             # CLEAR
             ~ secret = secret + 1
             -> straight
-            
-            
-                
-        
         }
         
         = LightingTheFire
@@ -93,6 +89,8 @@ VAR finalDoor = 0
         -> shovel
         
         *[Inspect the ruined cart]
+        # CLEAR
+        # IMAGE: OldCart.png
         -> cart
         
         =shovel
@@ -154,19 +152,18 @@ VAR finalDoor = 0
 
     = exit
     # CLEAR
-    You proceed down the now clear pathway and into the forest.
+    You proceed down the now clear pathway and you come to the entrance of the the forest proper.
         *[Enter the forest]
-        -> toWater.theForest
+        -> findHerb
 
     = findHerb
-    As you walk down the path into the forest a peculiar but a familiar bush with red berries catches your eye.
+    As you walk down the path into the forest a peculiar but familiar bush with red berries catches your eye.
         *[Inspect the bush]
             On closer inspection you recognise that this is a ginseng plant. Its roots are know to help heal the body and are believed to have magical restorative propertys.
                 * *[Harvest some ginseng root]
                 # IMAGE: Ginseng.png
                     You acquired some ginseng root. You placed it into your bag.
-                    
-                    * * *[Enter the forest]
+                    * * *[Continue into the forest]
                     # CLEAR
                     -> toWater.theForest
 
@@ -177,7 +174,7 @@ VAR finalDoor = 0
     = theForest
     Tall boreal trees tower above you. The trees create a thick canopy, blocking the sun from reaching the ground.
         *[Venture onwards]
-            [You notice your daughter is looking flushed]
+            As you are walking, you realise that Gude has begun breathing heavily. You look over her shoulder and see that she looks flushed and that sweat is beading on her forehead.
                 **[Check on her]
                     -> daughtersFever
                     
@@ -194,7 +191,7 @@ VAR finalDoor = 0
             # IMAGE: LightDarkPaths.png
             You venture further into the dark woods. You stop at an intersection of two paths. To your left you see a faint light break through the canopy. The path on the right leads between densely packed trees which submerge the area deeper inside in darkness.
                 **[Go Left]
-                # CLEAR
+                 # CLEAR
                 -> pathLeft
                 
                 **[Go Right]
@@ -214,7 +211,7 @@ VAR finalDoor = 0
                     You continue to approach the stump. The smell drags you onward     until finally you stand in front of the stump. Your hand, as if possessing a mind of it's own, reaches out to grab the stump. As your hand touches the stump, the smell grows overpowering and your consciouness grows hazy. You fall to the ground, unconscious.
                         -> wakeUp
                 **[Back away]
-                    You turn away and start walking away from the stump. As you move further away, the smell begins to grow weaker. Suddenly, as if angered, the smell from the stump surges back into your senses. Your mind feels as if it is full of wool and you distantly feel yourself falling to the ground as you fall into unconciousness. 
+                    You turn away and start walking away from the stump. As you move further away, the smell begins to grow weaker. Suddenly, as if angered, the smell from the stump surges back into your senses. Your mind feels as if it is full of wool and you distantly feel yourself falling to the ground as you fall into unconsciousness. 
                     -> wakeUp
     
     = pathRight
@@ -228,13 +225,12 @@ VAR finalDoor = 0
                 # IMAGE: MagicInDark.png
                     As you turn back towards the crossroads, the rustling grows louder. Suddenly, a ball of pink glowing energy flies out from between the trees and hits your chest. You reel back from the blast and you feel yourself collapse before you fall unconcious.
                     -> wakeUp
-                    # CLEAR
                 **[Sprint forward]
-                # IMAGE: MagicInDark.png
+                 # IMAGE: MagicInDark.png
                 You start sprinting down the rest of the path as quickly as you can manage. Suddenly, you turn a corner and see a small glowing orb hovering in front of you. The orb begins to fly towards you and as you are attempting to stop, it slams into you. 
-                The air is knocked from your lungs and you stumble to the ground, wheezing. Your head smacks off the trunk of a tree and you begin to feel your conciousness fade. As you regard the orb through watery eyes, you can make out the outline of a small person within before you collapse into unconciousness.
+                The air is knocked from your lungs and you stumble to the ground, wheezing. Your head smacks off the trunk of a tree and you begin to feel your conciousness fade. As you regard the orb through watery eyes, you can make out the outline of a small person within before you collapse into unconsciousness.
                     ***[Continue]
-                    # CLEAR
+                    #CLEAR
                     -> wakeUp
             
     = wakeUp
@@ -242,7 +238,7 @@ VAR finalDoor = 0
         *[Crawl along the pathway]
         #CLEAR
         # IMAGE: OvergrownCave.png
-            You follow the pathway, crawling on your belly. After some time, you come out on the other side of the bushes. As you get too your feet, you see a cave entrance in front of you which is covered in overgrown vines.
+            You follow the pathway, crawling on your belly. After some time, you come out on the other side of the bushes. As you get too your feet, you see a cave entrance in front of you which is covered in overgrown vines. 
                 **[Approach the cave entrance]
                     You walk to the entrance of the cave. Upon closer inspection, you see that the vines have become so intertwined that the cave beyond is inaccessible in it's current state.
                         ***[Use Fire]
@@ -260,7 +256,6 @@ VAR finalDoor = 0
                         You shield your eyes from the sunlight as you exit the cave opening. Once your eyes adjust, you look around and see that your are in a settlement of some kind. You see tens of small light orbs flitting around from place to place and gathering within tree hollows. 
                         *[Continue]
                         #clear
-                        
                         One of the light orbs approaches you. As it comes closer, the light surrounding it begins to dim and you can make out that there is a small person within the orb. They have a pair of luminescent wings on their back. They stop in front of you and gesture with their hands for you to follow.
                         **[Follow them]
                             ->followSprite
@@ -271,12 +266,13 @@ VAR finalDoor = 0
                                     You follow the sprite as they lead you through the village. Eventually, you come to a stone circle, where you see Gude placed upon a stone plinth in the centre. The sprites are tending to her, but you can see that she is still feverish. 
                                     You move to approach her, but the sprite stops you and gestures for you to continue following them.
                                             *[Continue]
+                                            #clear
                                             The sprite leads you to a large lake which is glowing with a faint blue light from below. The sprite points at the source of the light and gestures for you to enter the lake.
                                             **[Enter the Lake]
                                             #CLEAR
                                             # IMAGE: Water.png
                                                 You walk into the lake and begin to swim down towards the source of the blue light. As you get closer, you can make out that the light is coming from a pool of blue liquid at the bottom of the pool.
-                                                As you approach the liquid and reach out towards it, it surges towards your hand. Congratualtions, you have gained access to the element of Water!
+                                                As you approach the liquid and reach out towards it, it surges towards your hand. Congratulations, you have gained access to the element of Water!
                                                 ***[Continue]
                                                 # CLEAR
                                                 # IMAGE: FairyVillage.png
@@ -300,11 +296,11 @@ VAR finalDoor = 0
     = Enter
     You walk further into the forest and encounter the mouth of a cave leading up the mountain. You enter the cave. After some time, you notice the space is becoming tighter as you ascend. You see light shining through an exit ahead of you. 
         *[Proceed]
-        # CLEAR
+         # CLEAR
         # IMAGE: Cabin.png
             You step out of the cave into a frostbitten landscape. The tall pine trees around you are iced with snow and you see a small abandoned log cabin in front of you.
                 **[Enter the cabin]
-                # CLEAR
+                 # CLEAR
                     You step inside the old wooden cabin and find nothing of interest. You and Gude sit on an old chair for moment. Your moment of calm is interupted by the sounds of Gude's stomach rumbling.
                         ***[Search the cabin for food]
                             You pick up Gude and stand. You see a fireplace and a makeshift kitchen. 
@@ -322,7 +318,7 @@ VAR finalDoor = 0
 {
 
     - key == true:
-        You inspect the fireplace and find a keyhole in the alcove. You insert the key and the alcove opens revealing a secret passage
+         You inspect the fireplace and find a keyhole in the alcove. You insert the key and the alcove opens revealing a secret passage.
             -> secretPassage
     
     - else:
@@ -336,7 +332,7 @@ VAR finalDoor = 0
 {
     
     - key == true:
-        You search the kitchen and find nothing.
+         You search the kitchen and find nothing.
             *[Go back]
                 -> search
     
@@ -377,7 +373,6 @@ VAR finalDoor = 0
             # IMAGE: DeathRuins.png
                 As your hands grasp the key the cold of the metal seems to penetrate your whole body. You feel something jagged grasp your leg. You turn and look down at horrific, skeletal amalgam with appendages resembling scythe blades. A boney hand reaches up moving towards Gude. 
                     **[Run]
-
                         You break free the abominations grasp and run back to the main room. The entrance is now blocked by felled trees. Panicked you look around for a way out. As the creature pulls itself closer...
                         -> findEscape
                 
@@ -417,7 +412,7 @@ VAR finalDoor = 0
             
             The sound of grinding metal approaches behind you...
             
-            "Its" found you both again. You must flee.
+            It has found you both again. You must flee.
                 **[Run]
                 # CLEAR
                 # IMAGE: GemCave.png
@@ -441,97 +436,124 @@ VAR finalDoor = 0
     
 === toAir
     = Enter
-    [LEAVE CAVE]
-        *[CLIMB MOUTAIN]
-            [ARRIVE ON MOUNTAIN SIDE]
+    You rush up the steps you created and you once again find yourself on the mountainside. However, you have no time to appreciate the scenery, as you can still feel Death's cold presence down below and Gude's condition has worsened, as you can tell that she is barely clinging onto conciousness.
+        *[Climb the mountain]
+            You begin to climb up the mountainside, making your way over rocky outcrops and scaling piles of loose shale. After travelling some distance, the cold feeling down the back of your neck finally begins to fade somewhat. As you are finally about to relax, however, you hear the sound of some rocks being knocked loose behind you. With a terrible feeling of dread, you turn around to see that Death is slowly prowling towards you.
                 **[This is going to be a terrible night...]
-                    [DEATH REAPPEARS (CHASE SCENE)]
-                        ***[ESCAPE OVER RAVINE]
-                            [ABOUT TO GO OVER RAVINE]
+                    You turn and rush into a headlong sprint without a second glance behind you. You can hear Death knocking stones loose as it rushes to chase after you. As you are running up the mountainside, you see a ravine off to your left and a forest of stone pillars to your right.
+                        ***[Rush towards the ravine]
+                            You run to the side of the ravine and you can see that it drops down to an underground river below. There is the rotted remnants of a bridge on the side of the ravine. 
+                            Perhaps you can come up with another way to get across...
                                 ****[Use Elements]
                             -> combineElements.ravine
                             
-                        ***[FLEE THROUGH ROCKS]
-                            [ABOUT TO FLEE THROUGH ROCKS]
+                        ***[Flee into the rock forest]
+                            You enter the rock forest and begin weaving through the pillars. As you are making your way through, you see a large crack in the side of one of the pillars. 
+                            Perhaps there is a way to use it to hide yourself.
                                 ****[Use Elements]
                             -> combineElements.throughRocks
     
     = avoidDeath1
-    [AFTER JUMPING OVER RAVINE YOU KEEP RUNNING]
+    After clearing the ravine, you turn to see that death is stuck on the other side and unable to reach you.
+    You have avoided Death, for now.
     *[Proceed]
         -> upMountain
         
     = avoidDeath2
-    [YOU WAIT UNTIL DEATH FLIES OVER]
+    You wait inside the crack. After some time, you hear the sounds of movement outside. However, eventually, the sounds grow distant, until eventually you are left in silence. You clear away the mud and find yourself alone. 
+    You have avoided Death, for now.
     *[Proceed]
         ->upMountain
     
     = upMountain
-    [GOING UP MOUNTAIN, SEE TREE]
-        *[Investigate]
-            [FIND WIND CHIME, GAIN AIR]
-                **[Pick up wind chime]
-                    [PROCEED ON TO FIND HERB]
-                    [LAND SLIDE BLOCKS DA WAY]
-                        ***[Use Elements]
-                            -> combineElements.landSlide
-
-    = getHerb
-    [GETTING THE HERB]
-        *[KEEP GOING]
-            [CONTINUE UP MOUNTAIN AS DEATH IS IN PURSUIT]
-                **[TRANSITION INTO FINAL LEVEL]
-                    -> thePeak.Enter
+    You continue your climb and eventually, you reach a plateau near the mountain peak. On this plateau, an ancient stone altar stands before you. As you approach the altar, you see that it is engraved with depictions of the wind, and resting upon it is a set of wind chimes that are glowing with a mystical green light.
+        *[Pick up the wind chime]
+              You pick up the wind chimes. As you do so, you feel the wind around grow still, then begin to lightly circle around you.
+              Congratulations, you have gained the element of Air!
+              **[Proceed onwards]
+                You walk around the altar and you can see that there is an tunnel leading into the mountain behind it. As you move toward the tunnel, you suddenly hear a resounding crack echo above you. You look up and see boulders falling down the mountainside. They fall down and block the tunnel. You now need to find a way to clear the blocked entrance.
+                    ***[Use Elements]
+                        -> combineElements.landSlide
 
 === thePeak
 
     = Enter
-{
+    The fireball blasts away the debris from the landslide, leaving the tunnel into the mountain clear once again.
+        *[Enter the tunnel]
+        You walk down the tunnel and you come into a large room.
+        -> MainChamber
+        
+     =MainChamber
+    {
 
     - finalDoor == 3:
-        [THE FINAL DOOR OPENS]
-        *[Open the final door]
+        As you walk back into the main room, you see that the three symbols on the large door have lit up. As you come to stand before it, the door begins to open and you can see light filtering through it.
+        *[Walk through the door]
             ~ finalDoor = finalDoor - 3
             -> finalDoorOpens
     
     - else:
-    [REACH THE PEAK OF THE MOUNTAIN, FIND ANCIENT RUIN]
-        *[ENTER ANCIENT RUIN]
-            [COME ACROSS 3 DOORS]
+            Before you lies a large door which has three smaller doors surrounding it. The three smaller doors each have a symbol upon them, the first door has the symbol of a snowflake carved on it, the second door has a lightning bolt carved on it and the final door is carved with the symbol of a metal ingot.
+                **[Inspect the large door]
+                    -> mainDoor
             
-                **[ICE DOOR]
+                **[Approach the ice door]
                     ~ finalDoor = finalDoor + 1
                     -> iceDoor
                
-                **[LIGHTNING DOOR]
+                **[Approach the lightning door]
                     ~ finalDoor = finalDoor + 1
                     -> lightningDoor
                 
-                **[METAIL DOOR]
+                **[Approach the metal door]
                     ~ finalDoor = finalDoor + 1
                     -> metalDoor
-}
+    }
+    
+    = mainDoor
+    You approach the large central door. You see that there are three symbols on the door. The three symbols correspond to the symbols on the other three doors. When you try to push open the door, it does not move.
+        **[Approach the ice door]
+                    ~ finalDoor = finalDoor + 1
+                    -> iceDoor
+               
+                **[Approach the lightning door]
+                    ~ finalDoor = finalDoor + 1
+                    -> lightningDoor
+                
+                **[Approach the metal door]
+                    ~ finalDoor = finalDoor + 1
+                    -> metalDoor
 
     = iceDoor
-    [A TASK PRESENTS ITSELF, CREATE ICE]
+    You approach the door with the snowflake symbol on it. As you approach the door, it swings open and you see an altar in the centre of the room. Above the altar, there is a passage carved into the wall which reads:
+    
+        "Place that which has been carved upon the entrance on the altar and you shall pass the trial. That which brings life to all and that which allows speech, song and silence are your allies in this trial."
         *[Use Elements]
             -> combineElements.iceDoor    
     
     = lightningDoor
-    [A TASK PRESENTS ITSELF, CREATE LIGHTNING]
+    You approach the door with the lightning bolt marked upon it. It swings open and you see an altar in the centre of the room. A metallic spike sticks out from the center of the altar. Above the altar, there is a passage carved into the wall which reads:
+    
+        "Place that which has been carved upon the entrance on the altar and you shall pass the trial. That which burns all life and that which soothes those burns, along with the breath within your lungs are neccessary for this trial."
         *[Use Elements]
             -> combineElements.lightningDoorPT1    
     
     = metalDoor
-    [A TASK PRESENTS ITSELF, CREATE METAL]
+     You approach the door with the ingot carved on it. As you approach the door, it swings open and you see an altar in the centre of the room. There is divot in the middle of the altar which forms the shape of a bowl. Above the altar, there is a passage carved into the wall which reads:
+     
+        "Place that which has been carved upon the entrance on the altar and you shall pass the trial. That which acts as the flesh and blood of the earth is neccessary for this trial, as well as that which surrounds it and allows life to flourish upon it."
         *[Use Elements]
             -> combineElements.metalDoorPT1
 
     = finalDoorOpens    
-     [GET THE FINAL HERB]
-        *[COMBINE ALL OF THE HERBS]
+     You walk through the door and you come out into a small grove. In front of you is a massive, ancient rowan tree. You approach the trunk of the tree and see orange sap dripping off a broken branch of the tree. You have now acquired all the herbs you need.
+        *[Combine all the herbs together]
+            -> Ending
             
-    
+    = Ending
+    You place all of the materials you need for the cure in front of you, as well as the alchemical tools you have brought with you. You take Gude from your back and place her on the ground. She has fallen unconscious and her breathing is growing faint. You use your alchemical tools to combine the materials into the cure and you then pour it into a bowl. 
+    You gently wake up Gude and feed her the cure. You immediately notice her breathing steady and her complexion improve. The cure has worked. As you pick Gude back up and return her to your back, you hear a screech of rage echo across the mountain as Death realises that his prey has escaped his grasp.
+    Congratulations, you have reached the end of the game.
 -> END
 
 === combineElements
@@ -539,14 +561,14 @@ VAR finalDoor = 0
     = burnTrees
 {
     - fire == 1:
-    # CLEAR
+     # CLEAR
     # IMAGE: BlockBurned.png
        The element of fire dances from your hand and jumps towards the trees burning away at them and clearing a path.
         ~ fire = fire - 1
         -> Tutorial.exit
 
         - else:
-                +[Fire]
+                +[Continue]
                 You proceed down the straight path and approach the trees blocking your way.
                     ~ fire = fire + 1
                     -> burnTrees
@@ -558,7 +580,7 @@ VAR finalDoor = 0
 
     - fire == 1 && water == 1 && combine == 2:
         +[Combine Elements]
-        # CLEAR
+             # CLEAR
         # IMAGE: Thistle.png
             You create steam to knock out the pesky wasps. You gather some thistle, place it in your bag and continue onwards.
                 ~ fire = fire - 1
@@ -605,16 +627,15 @@ VAR finalDoor = 0
 
     - fire == 1 && earth == 1 && combine == 2:
         + [Combine Elements]
-        # CLEAR
+            # CLEAR
         # IMAGE: MistleToe.png
-            You create magma over the water. A bridge of stone forms leading you to the plants on the other side. You inspect one bush and find mistletoe. This shall do as an ingredient for your medicine. You take a spring and place it in your bag.
+            You create magma over the water. A bridge of stone forms leading you to the plants on the other side. You inspect one bush and find mistletoe. This shall do as an ingredient for your medicine. You take a sprig and place it in your bag.
             ~ fire = fire - 1
             ~ earth = earth - 1
             ~ combine = combine - 2
-                ++ [Look around]
-                # CLEAR
-                    Ther seems to be no way out other then up. Your elements should be able to help you...
-                        +++[Use Elements]
+                ++ [Escape the Cave]
+                    As you look around for an escape route, you notice that light is filtering down through a hole in the roof of the cave. Perhaps there is a way for that to serve as your escape route.
+                        +++[Combine Elements]
                 -> escapeCave
     
     - fire == 1 && water == 1 && combine == 2:
@@ -675,19 +696,16 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
-    Add cinders...
     -> getAcrossWater
     
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
-    Add vapour...
     -> getAcrossWater
     
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
-    Add stone...
     -> getAcrossWater
 }
 
@@ -720,7 +738,7 @@ VAR finalDoor = 0
     
     - water == 1 && earth == 1 && combine == 2:
         You create mud and use it to make steps for you to
-        climb up towards the exit to the cave.
+        escape through the hole in the roof.
             -> toAir.Enter
 
         - fire == 2 && combine == 2:
@@ -757,19 +775,16 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
-    Add cinders...
     -> escapeCave
     
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
-    Add Vapour...
     -> escapeCave
     
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
-    Add Stone...
     -> escapeCave
 }
     = ravine
@@ -838,19 +853,16 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
-    Add cinders...
     -> ravine
     
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
-    Add vapour...
     -> ravine
     
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
-    Add stone...
     -> ravine
 }
 
@@ -881,7 +893,7 @@ VAR finalDoor = 0
  
     - water == 1 && earth == 1 && combine == 2:
         + [Combine Elements]
-            You become one with the earth and blend into the ground amongst the rocks.
+            You squeeze yourself and Gude into the crack and use mud to cover over the entrance.
                 # CLEAR
                     ~ water = water - 1
                     ~ earth = earth - 1
@@ -922,19 +934,16 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
-    Add cinders...
     -> throughRocks
     
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
-    Add vapour...
     -> throughRocks
     
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
-    Add stone...
     -> throughRocks
 }
 
@@ -971,7 +980,7 @@ VAR finalDoor = 0
                     ~ fire = fire - 1
                     ~ air = air - 1
                     ~ combine = combine - 2
-                -> toAir.getHerb    
+                    -> thePeak.Enter
     
     - water == 1 && earth == 1 && combine == 2:
         + [Combine Elements]
@@ -1054,22 +1063,18 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
-    Add cinders...
     -> landSlide
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
-    Add vapour...
     -> landSlide
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
-    Add stone...
     -> landSlide
     + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
-    Add wind...
     -> landSlide
 }
 
@@ -1123,7 +1128,7 @@ VAR finalDoor = 0
 
     - water == 1 && air == 1 && combine == 2:
         + [Combine Elements]
-            You have created the perfect amount of ice.
+            You have created the perfect amount of ice. It rests upon the altar and you can feel that something has changed within the main room.
                 # CLEAR
                   ~ water = water - 1
                   ~ air = air - 1
@@ -1188,22 +1193,18 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
-    Add cinders...
     -> iceDoor
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
-    Add vapour...
     -> iceDoor
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
-    Add stone...
     -> iceDoor
     + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
-    Add wind...
     -> iceDoor
 }
 
@@ -1256,7 +1257,7 @@ VAR finalDoor = 0
     
     - water == 1 && air == 1 && combine == 2:
         + [Combine Elements]
-            You've completeled part 1 of the trial
+            Upon combining air and water, you create clouds which fill the room you are standing in. You have completed the first step, but you still need to add something more to complete the trial.
                 ++[Combine Elements again]
                 ~ water = water - 1
                 ~ air = air - 1
@@ -1322,22 +1323,18 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
-    Add cinders...
     -> lightningDoorPT1
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
-    Add vapour...
     -> lightningDoorPT1
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
-    Add stone...
     -> lightningDoorPT1
     + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
-    Add wind...
     -> lightningDoorPT1 
 }
 
@@ -1368,7 +1365,7 @@ VAR finalDoor = 0
 
     - fire == 1 && air == 1 && combine == 2:
         + [Combine Elements]
-            You have passed the second half of the trial
+            You create a warm wind which begins to stir up the clouds. The clouds begin to mix and interact, and you begin to see sparks forming in the air. Suddenly, a bolt of electricity forms and leaps towards the altar. The spike lights up and you can feel that something has changed within the main room.
                 ++[Go Back]
                 # CLEAR
                     ~ fire = fire - 1
@@ -1456,22 +1453,18 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
-    Add cinders...
     -> lightningDoorPT2
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
-    Add vapour...
     -> lightningDoorPT2
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
-    Add stone...
     -> lightningDoorPT2
     + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
-    Add wind...
     -> lightningDoorPT2
 }
 
@@ -1491,7 +1484,8 @@ VAR finalDoor = 0
 
     - fire == 1 && earth == 1 && combine == 2:
         + [Combine Elements]
-            You've comepleted the first part of this trial.
+            You create magma which falls into the divot on the altar. You have completed the first step of the trial, but there is still something missing.
+            ++[Combine Elements again]
             # CLEAR
                 ~ fire = fire - 1
                 ~ earth = earth - 1
@@ -1587,22 +1581,18 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
-    Add cinders...
     -> metalDoorPT1
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
-    Add vapour...
     -> metalDoorPT1
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
-    Add stone...
     -> metalDoorPT1
     + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
-    Add wind...
     -> metalDoorPT1
 }
 
@@ -1653,7 +1643,7 @@ VAR finalDoor = 0
     
     - water == 1 && air == 1 && combine == 2:
         + [Combine Elements]
-            You have completed the second half of the trial
+            You create a jet of water that cools down the molten earth in the divot. After it cools down, you see protrusions of various metals within the resulting rock. The
                 + + [Go Back]
                 # CLEAR
                   ~ water = water - 1
@@ -1717,21 +1707,144 @@ VAR finalDoor = 0
     + [Fire]
     ~ fire = fire + 1
     ~ combine = combine + 1
-    Add cinders...
     -> metalDoorPT2
     + [Water]
     ~ water = water + 1
     ~ combine = combine + 1
-    Add vapour...
     -> metalDoorPT2
     + [Earth]
     ~ earth = earth + 1
     ~ combine = combine + 1
-    Add stone...
     -> metalDoorPT2
     + [Air]
     ~ air = air + 1
     ~ combine = combine + 1
-    Add wind...
     -> metalDoorPT2    
 }
+
+/*    = toBeUsed
+{
+    - fire == 1 && water == 1 && combine == 2:
+        + [Combine Elements]
+        # CLEAR
+            You have made steam and disappered from view.
+            You have come to the end of the tutorial.
+            ~ fire = fire - 1
+            ~ water = water - 1
+            ~ combine = combine - 2
+        -> return1
+    
+    - fire == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you've created lava and burned yourself severely.
+            + +[Try Again?]
+            # CLEAR
+                ~ fire = fire - 1
+                ~ earth = earth - 1
+                ~ combine = combine - 2
+                -> forestFire
+    
+    - fire == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have spontaneously combusted.
+                + + [Try Again?]
+                # CLEAR
+                    ~ fire = fire - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                -> forestFire
+    
+    - water == 1 && earth == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created mud and gotten your clothes dirty
+                + + [Try Again?]
+                # CLEAR
+                    ~ water = water - 1
+                    ~ earth = earth - 1
+                    ~ combine = combine - 2
+                -> forestFire
+                
+    - water == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations dark storm clouds have appeared above you as torrential
+            rain pours down on you, you're now drenched.
+                + + [Try Again?]
+                # CLEAR
+                  ~ water = water - 1
+                  ~ air = air - 1
+                  ~ combine = combine - 2
+                -> forestFire
+                
+    - earth == 1 && air == 1 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created a sandstorm and it's getting in your eyes
+            you have successfully blinded yourself and can no longer continue.
+                + + [Try Again?]
+                # CLEAR
+                    ~ earth = earth - 1
+                    ~ air = air - 1
+                    ~ combine = combine - 2
+                    -> forestFire
+                    
+    - fire == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created more fire and have scorched yourself
+            beyond repair.
+                ++[Try Again?]
+                # CLEAR
+                    ~ fire = fire - 2
+                    ~ combine = combine - 2
+                    -> forestFire
+                    
+    - water == 2 && combine == 2:
+        + [Combine Elements]
+            Congratulations you have created even more water enough
+            to cause a tsunami in fact.
+                ++[Try Again?]
+                # CLEAR
+                    ~ water = water - 2
+                    ~ combine = combine - 2
+                    -> forestFire
+                    
+    - earth == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have created enough earth to bury
+            yourself alive.
+                ++[Try Again?]
+                # CLEAR
+                    ~ earth = earth - 2
+                    ~ combine = combine - 2
+                    -> forestFire
+                    
+    - air == 2 && combine == 2:
+        +[Combine Elements]
+            Congratulations you have drastically increased the amount of oxygen around you,
+            every single bug within your area starts to grow to 50 times their size and 
+            attacks you.
+                ++[Try Again?]
+                # CLEAR
+                    ~ air = air - 2
+                    ~ combine = combine - 2
+                    -> forestFire
+    - else:
+        This is WIP and is only here for the playtesting
+        Which elements would you like to combine
+    
+    + [Fire]
+    ~ fire = fire + 1
+    ~ combine = combine + 1
+    -> forestFire
+    + [Water]
+    ~ water = water + 1
+    ~ combine = combine + 1
+    -> forestFire
+    + [Earth]
+    ~ earth = earth + 1
+    ~ combine = combine + 1
+    -> forestFire
+    + [Air]
+    ~ air = air + 1
+    ~ combine = combine + 1
+    -> forestFire
+}*/
+
