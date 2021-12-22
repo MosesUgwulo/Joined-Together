@@ -153,6 +153,7 @@ VAR finalDoor = 0
 
 
     = exit
+    # CLEAR
     You proceed down the now clear pathway and into the forest.
         *[Enter the forest]
         -> toWater.theForest
@@ -176,8 +177,8 @@ VAR finalDoor = 0
     = theForest
     Tall boreal trees tower above you. The trees create a thick canopy, blocking the sun from reaching the ground.
         *[Venture onwards]
-            You check on Gude. Her face looks flushed and pale.
-                **[Check her tempature]
+            [You notice your daughter is looking flushed]
+                **[Check on her]
                     -> daughtersFever
                     
                 **[Let her suffer]
