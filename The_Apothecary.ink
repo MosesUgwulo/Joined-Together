@@ -559,14 +559,14 @@ VAR finalDoor = 0
 
     - fire == 1 && earth == 1 && combine == 2:
         + [Combine Elements]
-            YOU CREATE MAGMA OVER THE WATER TO COOL IT DOWN AND TURN IT
-            TO ROCK SO YOU CAN WALK OVER IT TO GET THE HERB.
+            You create magma over the water to cool it down and turn it
+            to rock so you can walk over it to get the herb
             ~ fire = fire - 1
             ~ earth = earth - 1
             ~ combine = combine - 2
                 ++ [ESCAPE THE CAVE]
-                    WHILE YOU'RE ESCAPING YOU SEE A LIGHT COMING FROM HIGH UP
-                    YOU THINK OF A WAY TO REACH THE EXIT OF THE CAVE.
+                    While you're escaping you see a light coming from high up
+                    you think of a way to reach the exit of the cave.
                         +++[USE ELEMENTS]
                 -> escapeCave
     
@@ -1652,130 +1652,3 @@ VAR finalDoor = 0
     ~ combine = combine + 1
     -> metalDoorPT2    
 }
-
-/*    = toBeUsed
-{
-    - fire == 1 && water == 1 && combine == 2:
-        + [Combine Elements]
-        # CLEAR
-            You have made steam and disappered from view.
-            You have come to the end of the tutorial.
-            ~ fire = fire - 1
-            ~ water = water - 1
-            ~ combine = combine - 2
-        -> return1
-    
-    - fire == 1 && earth == 1 && combine == 2:
-        + [Combine Elements]
-            Congratulations you've created lava and burned yourself severely.
-            + +[Try Again?]
-            # CLEAR
-                ~ fire = fire - 1
-                ~ earth = earth - 1
-                ~ combine = combine - 2
-                -> forestFire
-    
-    - fire == 1 && air == 1 && combine == 2:
-        + [Combine Elements]
-            Congratulations you have spontaneously combusted.
-                + + [Try Again?]
-                # CLEAR
-                    ~ fire = fire - 1
-                    ~ air = air - 1
-                    ~ combine = combine - 2
-                -> forestFire
-    
-    - water == 1 && earth == 1 && combine == 2:
-        + [Combine Elements]
-            Congratulations you have created mud and gotten your clothes dirty
-                + + [Try Again?]
-                # CLEAR
-                    ~ water = water - 1
-                    ~ earth = earth - 1
-                    ~ combine = combine - 2
-                -> forestFire
-                
-    - water == 1 && air == 1 && combine == 2:
-        + [Combine Elements]
-            Congratulations dark storm clouds have appeared above you as torrential
-            rain pours down on you, you're now drenched.
-                + + [Try Again?]
-                # CLEAR
-                  ~ water = water - 1
-                  ~ air = air - 1
-                  ~ combine = combine - 2
-                -> forestFire
-                
-    - earth == 1 && air == 1 && combine == 2:
-        + [Combine Elements]
-            Congratulations you have created a sandstorm and it's getting in your eyes
-            you have successfully blinded yourself and can no longer continue.
-                + + [Try Again?]
-                # CLEAR
-                    ~ earth = earth - 1
-                    ~ air = air - 1
-                    ~ combine = combine - 2
-                    -> forestFire
-                    
-    - fire == 2 && combine == 2:
-        + [Combine Elements]
-            Congratulations you have created more fire and have scorched yourself
-            beyond repair.
-                ++[Try Again?]
-                # CLEAR
-                    ~ fire = fire - 2
-                    ~ combine = combine - 2
-                    -> forestFire
-                    
-    - water == 2 && combine == 2:
-        + [Combine Elements]
-            Congratulations you have created even more water enough
-            to cause a tsunami in fact.
-                ++[Try Again?]
-                # CLEAR
-                    ~ water = water - 2
-                    ~ combine = combine - 2
-                    -> forestFire
-                    
-    - earth == 2 && combine == 2:
-        +[Combine Elements]
-            Congratulations you have created enough earth to bury
-            yourself alive.
-                ++[Try Again?]
-                # CLEAR
-                    ~ earth = earth - 2
-                    ~ combine = combine - 2
-                    -> forestFire
-                    
-    - air == 2 && combine == 2:
-        +[Combine Elements]
-            Congratulations you have drastically increased the amount of oxygen around you,
-            every single bug within your area starts to grow to 50 times their size and 
-            attacks you.
-                ++[Try Again?]
-                # CLEAR
-                    ~ air = air - 2
-                    ~ combine = combine - 2
-                    -> forestFire
-    - else:
-        This is WIP and is only here for the playtesting
-        Which elements would you like to combine
-    
-    + [Fire]
-    ~ fire = fire + 1
-    ~ combine = combine + 1
-    -> forestFire
-    + [Water]
-    ~ water = water + 1
-    ~ combine = combine + 1
-    -> forestFire
-    + [Earth]
-    ~ earth = earth + 1
-    ~ combine = combine + 1
-    -> forestFire
-    + [Air]
-    ~ air = air + 1
-    ~ combine = combine + 1
-    -> forestFire
-}*/
-
