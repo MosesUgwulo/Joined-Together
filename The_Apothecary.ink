@@ -153,7 +153,6 @@ VAR finalDoor = 0
 
 
     = exit
-    # CLEAR
     You proceed down the now clear pathway and into the forest.
         *[Enter the forest]
         -> toWater.theForest
