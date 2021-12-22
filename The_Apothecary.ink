@@ -176,8 +176,8 @@ VAR finalDoor = 0
     = theForest
     Tall boreal trees tower above you. The trees create a thick canopy, blocking the sun from reaching the ground.
         *[Venture onwards]
-            [You notice your daughter is looking flushed]
-                **[Check on her]
+            You check on Gude. Her face looks flushed and pale.
+                **[Check her tempature]
                     -> daughtersFever
                     
                 **[Let her suffer]
