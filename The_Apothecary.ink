@@ -152,7 +152,7 @@ VAR finalDoor = 0
 
     = exit
     # CLEAR
-    You proceed down the now clear pathway and you come to the entrance of the the forest proper.
+    You proceed down the now clear pathway and you come to the entrance of the forest proper.
         *[Enter the forest]
         -> findHerb
 
