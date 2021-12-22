@@ -54,3 +54,6 @@
 
 # <u> Feedback </u>
 ![Feedback](https://i.imgur.com/gqEXgf4.png)
+
+# <u> GDD </u>
+![GDD](https://i.imgur.com/bYg0cQY.png)
