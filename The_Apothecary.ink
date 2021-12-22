@@ -16,7 +16,6 @@ VAR finalDoor = 0
 
     = Intro
     # IMAGE: ApotScreen.png
-    You are an Apothecary named Leigh. Your daughter, Gude, is gravely ill and you are verturing into a forest to gather herbs to make medicine for her.
     * [START]
     # CLEAR
     -> TheCampfire
